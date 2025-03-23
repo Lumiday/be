@@ -1,0 +1,5 @@
+rootProject.name = 'be'
+
+include 'core:core-api'
+include 'core:core-enum'
+include 'storage:jpa'
