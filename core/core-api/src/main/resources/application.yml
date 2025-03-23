@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: core-api
+  config:
+    import:
+      - db-jpa.yml
+  web:
+    resources:
+      add-mappings: false

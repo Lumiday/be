@@ -2,7 +2,9 @@ package com.lumiday.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import lombok.Getter;
 
+@Getter
 @Entity
 public class ExampleEntity extends BaseEntity {
 
@@ -14,10 +16,6 @@ public class ExampleEntity extends BaseEntity {
 
     public ExampleEntity(String exampleColumn) {
         this.exampleColumn = exampleColumn;
-    }
-
-    public String getExampleColumn() {
-        return exampleColumn;
     }
 
 }

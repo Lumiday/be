@@ -2,7 +2,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate.default_batch_fetch_size: 100
 ---
@@ -19,6 +19,11 @@ storage:
   datasource:
     jpa:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://${storage.database.core-db.url}
-      username: ${storage.database.core-db.username}
-      password: ${storage.database.core-db.password}
+      jdbc-url: jdbc:mysql://129.154.62.103:32304/lumyday
+      username: rappire
+      password: 1234
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 20
+        idle-timeout: 30000
+        pool-name: HikariCP

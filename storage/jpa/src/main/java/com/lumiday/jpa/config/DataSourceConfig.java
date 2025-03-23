@@ -12,12 +12,12 @@ public class DataSourceConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "storage.datasource.jpa")
-    public HikariConfig jpaHikariConfig() {
+    public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
 
     @Bean
-    public HikariDataSource jpaDataSource(@Qualifier("jpaHikariConfig") HikariConfig config) {
+    public HikariDataSource coreDataSource(@Qualifier("hikariConfig") HikariConfig config) {
         return new HikariDataSource(config);
     }
 }
