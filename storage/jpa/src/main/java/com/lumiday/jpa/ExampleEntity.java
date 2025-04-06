@@ -1,5 +1,6 @@
 package com.lumiday.jpa;
 
+import com.lumiday.jpa.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;

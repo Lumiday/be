@@ -1,4 +1,4 @@
-package com.lumiday.jpa;
+package com.lumiday.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

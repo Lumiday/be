@@ -19,9 +19,9 @@ storage:
   datasource:
     jpa:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://129.154.62.103:32304/lumyday
-      username: rappire
-      password: 1234
+      jdbc-url: jdbc:mysql://localhost:3307/lumiday
+      username: lumiday
+      password: lumiday
       hikari:
         minimum-idle: 5
         maximum-pool-size: 20
