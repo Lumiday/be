@@ -5,4 +5,7 @@ dependencies {
     implementation project(":core:core-enum")
     implementation project(":storage:jpa")
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.minio:minio:8.5.7'
+    //Swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 }

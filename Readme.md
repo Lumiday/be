@@ -39,6 +39,15 @@
 > - 오직 **Implement Layer만** 다른 Implement를 참조할 수 있습니다.
 > - JPA `Entity`는 오직 **Repository, Implement Layer 내부에서만 사용**하며 외부에는 `DTO`를 통해 전달합니다.
 
+| 구현체 역할        | 네이밍 패턴 예시                     | 설명                                         |
+|---------------|-------------------------------|--------------------------------------------|
+| 외부 API 호출     | XxxClient                     | ex: MinioClient, KakaoMapClient            |
+| 데이터 저장/읽기     | XxxStore 또는 XxxRepositoryImpl | JPA가 아닌 저장소 구현시 ex: FileStore, LogStore    |
+| 복잡한 작업 처리     | XxxProcessor 또는 XxxExecutor   | ex: PdfExportProcessor, BatchJobExecutor   |
+| 단순 위임/연동      | XxxAdapter                    | ex: EmailAdapter, SmsAdapter               |
+| 직접 수행 (핵심 기능) | XxxHandler                    | ex: FileUploadHandler, TokenRefreshHandler |
+| JPA 대체 저장소 구현 | XxxJpaStore 또는 XxxPersistence | JPA 사용하되, Entity 대신 DTO를 사용하는 구현체          |
+
 ---
 
 ## 🧱 멀티 모듈 구성
