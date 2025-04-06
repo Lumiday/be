@@ -7,3 +7,9 @@ spring:
   web:
     resources:
       add-mappings: false
+
+minio:
+  url: http://localhost:9000
+  access-key: G1ctsDXJ4VrolSvQuqjn
+  secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
+  bucket: lumiday-image
