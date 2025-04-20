@@ -40,4 +40,4 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           port: ${{ secrets.VM_PORT }}
           script: |
-            kubectl set image lumiday/deployment lumiday-container=${{ secrets.DOCKERHUB_USERNAME }}/lumiday:latest --record
+            kubectl set image deployments lumiday-deployment lumiday-container=${{ secrets.DOCKERHUB_USERNAME }}/lumiday:latest --record -n lumiday
