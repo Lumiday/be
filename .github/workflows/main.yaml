@@ -29,6 +29,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/lumiday:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          platforms: linux/arm64
+
 
       - name: VM에 배포
         uses: appleboy/ssh-action@v0.1.7
