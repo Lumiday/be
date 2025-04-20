@@ -2,14 +2,16 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate.default_batch_fetch_size: 100
 ---
-spring.config.activate.on-profile: local-dev
+spring.config.activate.on-profile: local
 
 spring:
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -19,9 +21,60 @@ storage:
   datasource:
     jpa:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/lumiday
+      jdbc-url: jdbc:mysql://localhost:3306/lumiday-local
       username: lumiday
       password: lumiday
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 20
+        idle-timeout: 30000
+        pool-name: HikariCP
+
+---
+spring.config.activate.on-profile: prod
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+storage:
+  datasource:
+    jpa:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://mysql.mysql.svc.cluster.local:3306/lumiday
+      username: lumiday
+      password: lumiday
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 20
+        idle-timeout: 30000
+        pool-name: HikariCP
+
+---
+
+spring.config.activate.on-profile: test
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+storage:
+  datasource:
+    jpa:
+      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
       hikari:
         minimum-idle: 5
         maximum-pool-size: 20

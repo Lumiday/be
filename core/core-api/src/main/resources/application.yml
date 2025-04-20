@@ -8,8 +8,29 @@ spring:
     resources:
       add-mappings: false
 
+---
+spring.config.activate.on-profile: local
+
 minio:
   url: http://localhost:9000
   access-key: G1ctsDXJ4VrolSvQuqjn
   secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
+  bucket: lumiday-image-dev
+
+---
+spring.config.activate.on-profile: prod
+
+minio:
+  url: http://minio.minio.svc.cluster.local:9000
+  access-key: G1ctsDXJ4VrolSvQuqjn
+  secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
   bucket: lumiday-image
+
+---
+spring.config.activate.on-profile: test
+
+minio:
+  url: http://localhost:9000
+  access-key: G1ctsDXJ4VrolSvQuqjn
+  secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
+  bucket: lumiday-image-dev
