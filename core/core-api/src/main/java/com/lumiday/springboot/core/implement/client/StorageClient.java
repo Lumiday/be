@@ -4,9 +4,9 @@ import java.io.InputStream;
 
 public interface StorageClient {
 
-    void uploadToStorage(InputStream inputStream, long size, String fileName, String contentType);
+    void uploadToStorage(InputStream inputStream, long size, String fileName, String bucketName, String contentType);
 
-    void deleteFromStorage(String fileName);
+    void deleteFromStorage(String bucketName, String fileName);
 
-    byte[] downloadFromStorage(String fileName);
+    byte[] downloadFromStorage(String bucketName, String fileName);
 }

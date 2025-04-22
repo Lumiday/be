@@ -1,5 +1,6 @@
 package com.lumiday.springboot.core.implement.dto;
 
+import com.lumiday.core.enums.FileContentType;
 import com.lumiday.jpa.entity.FileEntity;
 import lombok.Getter;
 
@@ -9,11 +10,11 @@ public class FileInfo {
     String originalFileName;
     String savedFileName;
     String objectName;
-    String contentType;
+    FileContentType contentType;
     Long size;
 
     private FileInfo(Long id, String originalFileName, String savedFileName, String objectName,
-                     String contentType, Long size) {
+                     FileContentType contentType, Long size) {
         this.id = id;
         this.originalFileName = originalFileName;
         this.savedFileName = savedFileName;

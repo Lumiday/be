@@ -17,18 +17,25 @@ public class MinioConfig {
     @Value("${minio.secret-key}")
     private String secretKey;
 
-    @Value("${minio.bucket}")
-    private String bucketName;
+    @Value("${minio.buckets.image}")
+    private String imageBucket;
+
+    @Value("${minio.buckets.audio}")
+    private String audioBucket;
 
     @Bean
     public MinioClient minioClient() {
         return MinioClient.builder()
-            .endpoint(url)
-            .credentials(accessKey, secretKey)
-            .build();
+                .endpoint(url)
+                .credentials(accessKey, secretKey)
+                .build();
     }
 
-    public String getBucket() {
-        return bucketName;
+    public String getImageBucket() {
+        return imageBucket;
+    }
+
+    public String getAudioBucket() {
+        return audioBucket;
     }
 }

@@ -1,5 +1,6 @@
 package com.lumiday.springboot.core.implement.persistence;
 
+import com.lumiday.core.enums.FileContentType;
 import com.lumiday.jpa.entity.FileEntity;
 import com.lumiday.jpa.repository.FileRepository;
 import com.lumiday.springboot.core.implement.dto.FileInfo;
@@ -15,7 +16,7 @@ public class FilePersistence {
 
     @Transactional
     public void saveFileInfo(String originalFileName, String savedFileName, String objectName,
-                             String contentType, long size) {
+                             FileContentType contentType, long size) {
 
         FileEntity fileEntity = FileEntity.builder()
                 .originalFileName(originalFileName)

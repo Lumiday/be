@@ -1,6 +1,5 @@
 package com.lumiday.springboot.core.implement.client;
 
-import com.lumiday.springboot.core.config.MinioConfig;
 import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
@@ -14,15 +13,14 @@ import org.springframework.stereotype.Service;
 public class MinioStorageClient implements StorageClient {
 
     private final MinioClient minioClient;
-    private final MinioConfig minioConfig;
 
     @Override
-    public void uploadToStorage(InputStream inputStream, long size, String fileName,
+    public void uploadToStorage(InputStream inputStream, long size, String fileName, String bucketName,
                                 String contentType) {
         try {
             minioClient.putObject(
                     PutObjectArgs.builder()
-                            .bucket(minioConfig.getBucket())
+                            .bucket(bucketName)
                             .object(fileName)
                             .stream(inputStream, size, -1)
                             .contentType(contentType)
@@ -34,11 +32,11 @@ public class MinioStorageClient implements StorageClient {
     }
 
     @Override
-    public void deleteFromStorage(String fileName) {
+    public void deleteFromStorage(String bucketName, String fileName) {
         try {
             minioClient.removeObject(
                     RemoveObjectArgs.builder()
-                            .bucket(minioConfig.getBucket())
+                            .bucket(bucketName)
                             .object(fileName)
                             .build());
         } catch (Exception e) {
@@ -47,11 +45,11 @@ public class MinioStorageClient implements StorageClient {
     }
 
     @Override
-    public byte[] downloadFromStorage(String objectName) {
+    public byte[] downloadFromStorage(String bucketName, String objectName) {
         try {
             InputStream inputStream = minioClient.getObject(
                     GetObjectArgs.builder()
-                            .bucket(minioConfig.getBucket())
+                            .bucket(bucketName)
                             .object(objectName)
                             .build()
             );

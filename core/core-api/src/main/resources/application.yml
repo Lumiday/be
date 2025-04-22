@@ -15,7 +15,9 @@ minio:
   url: http://localhost:9000
   access-key: G1ctsDXJ4VrolSvQuqjn
   secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
-  bucket: lumiday-image-dev
+  buckets:
+    image: lumiday-image-dev
+    audio: lumiday-audio-dev
 
 ---
 spring.config.activate.on-profile: prod
@@ -24,7 +26,9 @@ minio:
   url: http://minio.minio.svc.cluster.local:9000
   access-key: G1ctsDXJ4VrolSvQuqjn
   secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
-  bucket: lumiday-image
+  buckets:
+    image: lumiday-image
+    audio: lumiday-audio
 
 ---
 spring.config.activate.on-profile: test
@@ -33,4 +37,6 @@ minio:
   url: http://localhost:9000
   access-key: G1ctsDXJ4VrolSvQuqjn
   secret-key: g0Ii5LQ8SNFMHevmYLYMrq7YvdAdSPdXr307af0D
-  bucket: lumiday-image-dev
+  buckets:
+    image: lumiday-image-dev
+    audio: lumiday-audio-dev

@@ -1,6 +1,9 @@
 package com.lumiday.jpa.entity;
 
+import com.lumiday.core.enums.FileContentType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,12 +17,13 @@ public class FileEntity extends BaseEntity {
     private String originalFileName;
     private String savedFileName;
     private String objectName;
-    private String contentType;
+    @Enumerated(EnumType.STRING)
+    private FileContentType contentType;
     private Long size;
 
     @Builder
     public FileEntity(String originalFileName, String savedFileName, String objectName,
-                      String contentType, Long size) {
+                      FileContentType contentType, Long size) {
         this.originalFileName = originalFileName;
         this.savedFileName = savedFileName;
         this.objectName = objectName;

@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller;
 
 import com.lumiday.springboot.core.service.ImageService;
-import com.lumiday.springboot.core.service.dto.ImageWithType;
+import com.lumiday.springboot.core.service.dto.FileWithType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/file")
+@RequestMapping("/api/v1/image")
 public class ImageController {
 
     private final ImageService imageService;
@@ -37,7 +37,7 @@ public class ImageController {
             @Parameter(description = "업로드할 파일", required = true)
             @RequestPart("image") MultipartFile file) throws IOException {
 
-        String uploadedFileName = imageService.saveImage(file);
+        String uploadedFileName = imageService.saveFile(file);
         return ResponseEntity.ok(uploadedFileName);
     }
 
@@ -49,7 +49,7 @@ public class ImageController {
     })
     @DeleteMapping
     public ResponseEntity<Void> delete(@RequestParam String imageName) {
-        imageService.deleteImage(imageName);
+        imageService.deleteFile(imageName);
         return ResponseEntity.noContent().build();
     }
 
@@ -61,10 +61,10 @@ public class ImageController {
     })
     @GetMapping
     public ResponseEntity<byte[]> getImage(@RequestParam String imageName) {
-        ImageWithType image = imageService.getImage(imageName);
+        FileWithType file = imageService.getFile(imageName);
         return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(image.data());
+                .contentType(file.mediaType())
+                .body(file.data());
     }
 }
 
