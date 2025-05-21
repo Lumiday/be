@@ -4,11 +4,13 @@ import com.lumiday.core.enums.FileContentType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "files")
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
