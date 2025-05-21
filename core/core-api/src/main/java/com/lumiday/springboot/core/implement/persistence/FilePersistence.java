@@ -30,8 +30,8 @@ public class FilePersistence {
     }
 
     @Transactional
-    public void deleteFileInfo(String savedFileName) {
-        fileRepository.deleteBySavedFileName(savedFileName);
+    public void deleteFileInfo(Long fileInfoId) {
+        fileRepository.deleteById(fileInfoId);
     }
 
     public FileInfo findBySavedFileName(String imageName) {

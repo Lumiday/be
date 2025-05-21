@@ -1,5 +1,5 @@
 ### jpg 업로드 테스트
-POST http://localhost:8080/api/v1/file
+POST http://localhost:8080/api/v1/image
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -10,7 +10,7 @@ Content-Type: image/jpeg
 --boundary--
 
 ### png 업로드 테스트
-POST http://localhost:8080/api/v1/file
+POST http://localhost:8080/api/v1/image
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -21,7 +21,7 @@ Content-Type: image/png
 --boundary--
 
 ### webp 업로드 테스트
-POST http://localhost:8080/api/v1/file
+POST http://localhost:8080/api/v1/image
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -36,13 +36,13 @@ DELETE http://localhost:8080/api/v1/file?imageName=77d0d6e7-f5a9-4dc4-8840-b1a88
 Content-Type: application/json
 
 ### jpg 다운로드 테스트
-GET http://localhost:8080/api/v1/file?
+GET http://localhost:8080/api/v1/image?
     imageName=4e52d0bd-2488-4b94-9a83-1e708a49bec1.jpg
 
     Content-Type: multipart/form-data
 
 ### 1. jpg 업로드 (자동으로 uuid 파일명 저장)
-POST http://localhost:8080/api/v1/file
+POST http://localhost:8080/api/v1/image
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -58,8 +58,8 @@ Content-Type: image/jpeg
 
 
 ### 2. 업로드된 파일 다운로드 테스트 (자동으로 파일명 사용)
-GET http://localhost:8080/api/v1/file?imageName={{uploadedFileName}}
+GET http://localhost:8080/api/v1/image?imageName={{uploadedFileName}}
 
 
 ### 3. 업로드된 파일 삭제 테스트
-DELETE http://localhost:8080/api/v1/file?imageName={{uploadedFileName}}
+DELETE http://localhost:8080/api/v1/image?imageName={{uploadedFileName}}

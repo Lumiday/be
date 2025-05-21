@@ -8,7 +8,6 @@ import com.lumiday.springboot.core.service.dto.FileMeta;
 import com.lumiday.springboot.core.service.dto.FileWithType;
 import com.lumiday.springboot.core.service.factory.FileMetaFactory;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public abstract class BaseFileService {
 
-    private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private final StorageClient storageClient;
     private final FilePersistence filePersistence;
 
@@ -30,9 +28,8 @@ public abstract class BaseFileService {
         validateFile(file);
 
         FileMeta fileMeta = FileMetaFactory.from(file);
-        FileContentType contentType = FileContentType.of(fileMeta.extension(), file.getContentType());
 
-        if (!isSupported(contentType)) {
+        if (!isSupported(fileMeta.contentType())) {
             throw new IllegalArgumentException("지원하지 않는 파일 형식입니다.");
         }
 
@@ -41,7 +38,7 @@ public abstract class BaseFileService {
                 file.getSize(),
                 fileMeta.objectName(),
                 bucketName(),
-                file.getContentType()
+                fileMeta.contentType().getMimeType()
         );
 
         try {
@@ -49,7 +46,7 @@ public abstract class BaseFileService {
                     fileMeta.originalName(),
                     fileMeta.uuidName(),
                     fileMeta.objectName(),
-                    contentType,
+                    fileMeta.contentType(),
                     file.getSize()
             );
             return fileMeta.uuidName();
@@ -60,9 +57,11 @@ public abstract class BaseFileService {
     }
 
     public void deleteFile(String uuidName) {
+        FileInfo info = filePersistence.findBySavedFileName(uuidName);
+
         try {
-            filePersistence.deleteFileInfo(uuidName);
-            storageClient.deleteFromStorage(bucketName(), uuidName);
+            storageClient.deleteFromStorage(bucketName(), info.getObjectName());
+            filePersistence.deleteFileInfo(info.getId());
         } catch (Exception e) {
             throw new RuntimeException("파일 삭제 실패", e);
         }
