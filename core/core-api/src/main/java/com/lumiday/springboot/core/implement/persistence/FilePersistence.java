@@ -18,19 +18,13 @@ public class FilePersistence {
     public void saveFileInfo(String originalFileName, String savedFileName, String objectName,
                              FileContentType contentType, long size) {
 
-        FileEntity fileEntity = FileEntity.builder()
-                .originalFileName(originalFileName)
-                .savedFileName(savedFileName)
-                .objectName(objectName)
-                .contentType(contentType)
-                .size(size)
-                .build();
+        FileEntity fileEntity = FileEntity.of(originalFileName, savedFileName, objectName, contentType, size);
 
         fileRepository.save(fileEntity);
     }
 
     @Transactional
-    public void deleteFileInfo(Long fileInfoId) {
+    public void deleteFileInfo(String fileInfoId) {
         fileRepository.deleteById(fileInfoId);
     }
 

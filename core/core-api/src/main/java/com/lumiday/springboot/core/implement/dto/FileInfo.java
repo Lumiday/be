@@ -6,14 +6,14 @@ import lombok.Getter;
 
 @Getter
 public class FileInfo {
-    Long id;
+    String id;
     String originalFileName;
     String savedFileName;
     String objectName;
     FileContentType contentType;
     Long size;
 
-    private FileInfo(Long id, String originalFileName, String savedFileName, String objectName,
+    private FileInfo(String id, String originalFileName, String savedFileName, String objectName,
                      FileContentType contentType, Long size) {
         this.id = id;
         this.originalFileName = originalFileName;

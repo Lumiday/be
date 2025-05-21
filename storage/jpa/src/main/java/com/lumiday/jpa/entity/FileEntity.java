@@ -6,7 +6,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,13 +22,17 @@ public class FileEntity extends BaseEntity {
     private FileContentType contentType;
     private Long size;
 
-    @Builder
-    public FileEntity(String originalFileName, String savedFileName, String objectName,
-                      FileContentType contentType, Long size) {
+    private FileEntity(String originalFileName, String savedFileName, String objectName,
+                       FileContentType contentType, Long size) {
         this.originalFileName = originalFileName;
         this.savedFileName = savedFileName;
         this.objectName = objectName;
         this.contentType = contentType;
         this.size = size;
+    }
+
+    public static FileEntity of(String originalFileName, String savedFileName, String objectName,
+                                FileContentType contentType, Long size) {
+        return new FileEntity(originalFileName, savedFileName, objectName, contentType, size);
     }
 }
