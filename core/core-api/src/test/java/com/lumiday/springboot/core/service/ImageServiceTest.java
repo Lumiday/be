@@ -78,9 +78,7 @@ class ImageServiceTest {
         given(file.getContentType()).willReturn(contentType);
         given(file.getSize()).willReturn(fileSize);
         //When Then
-        assertThatThrownBy(() -> {
-            imageService.saveFile(file);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> imageService.saveFile(file)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("지원하지 않는 파일 형식입니다.");
     }
 
@@ -89,9 +87,7 @@ class ImageServiceTest {
         //Given
         given(file.isEmpty()).willReturn(true);
         //When Then
-        assertThatThrownBy(() -> {
-            imageService.saveFile(file);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> imageService.saveFile(file)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("파일이 비어 있습니다.");
     }
 
@@ -100,9 +96,7 @@ class ImageServiceTest {
         //Given
         given(file.getSize()).willReturn(imageService.maxSizeBytes() + 1);
         //When Then
-        assertThatThrownBy(() -> {
-            imageService.saveFile(file);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> imageService.saveFile(file)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("파일 용량은 20MB를 초과할 수 없습니다.");
     }
 

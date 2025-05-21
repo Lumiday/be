@@ -36,9 +36,7 @@ class FileMetaFactoryTest {
         //Given
         MockMultipartFile file = new MockMultipartFile("hello", "original.txt", "text/plain", "test".getBytes());
         //When & Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            FileMetaFactory.from(file);
-        }, "지원하지 않는 파일 형식입니다.");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> FileMetaFactory.from(file), "지원하지 않는 파일 형식입니다.");
     }
 
     @Test
@@ -57,9 +55,7 @@ class FileMetaFactoryTest {
         //Given
         MockMultipartFile file = new MockMultipartFile("hello", "original", "audio/mpeg", "test".getBytes());
         //When & Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            FileMetaFactory.from(file);
-        }, "파일 확장자가 없습니다.");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> FileMetaFactory.from(file), "파일 확장자가 없습니다.");
     }
 
     @Test
@@ -67,8 +63,6 @@ class FileMetaFactoryTest {
         //Given
         MockMultipartFile file = new MockMultipartFile("hello", "", "audio/mpeg", "test".getBytes());
         //When & Then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            FileMetaFactory.from(file);
-        }, "파일 이름이 없습니다.");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> FileMetaFactory.from(file), "파일 이름이 없습니다.");
     }
 }

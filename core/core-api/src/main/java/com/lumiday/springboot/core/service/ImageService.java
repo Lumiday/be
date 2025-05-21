@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageService extends BaseFileService {
 
-    private static final long MAX_FILE_SIZE = 20 * 1024 * 1024;
+    private static final long MAX_FILE_SIZE = 20L * 1024 * 1024;
     private final MinioConfig minioConfig;
 
     public ImageService(StorageClient storageClient, FilePersistence filePersistence, MinioConfig minioConfig) {
