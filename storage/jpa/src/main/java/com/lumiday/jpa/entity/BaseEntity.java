@@ -1,11 +1,12 @@
 package com.lumiday.jpa.entity;
 
+import de.huxhorn.sulky.ulid.ULID;
 import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,8 +16,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 public abstract class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(length = 26)
+    private String id;
 
     @CreationTimestamp
     @Column
@@ -26,4 +27,8 @@ public abstract class BaseEntity {
     @Column
     private LocalDateTime updatedAt;
 
+    @PrePersist
+    protected void onCreate() {
+        id = Optional.ofNullable(this.id).orElseGet(() -> new ULID().nextULID());
+    }
 }
