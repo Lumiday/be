@@ -45,7 +45,7 @@ jobs:
             TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
             PR_TITLE="${{ github.event.head_commit.message }}"
             
-            kubectl annotate deployment/${DEPLOYMENT} \
+            kubectl annotate deployment/lumiday-deployment \
             deploy.kubernetes.io/last-deploy="${TIMESTAMP}" \
             deploy.kubernetes.io/pr-title="${PR_TITLE}" \
             --overwrite -n lumiday
