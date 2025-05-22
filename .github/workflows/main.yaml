@@ -48,4 +48,4 @@ jobs:
             kubectl annotate deployment/${DEPLOYMENT} \
             deploy.kubernetes.io/last-deploy="${TIMESTAMP}" \
             deploy.kubernetes.io/pr-title="${PR_TITLE}" \
-            --overwrite -n ${NAMESPACE}
+            --overwrite -n lumiday
