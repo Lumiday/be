@@ -7,7 +7,6 @@ on:
 
 jobs:
   build-and-deploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +43,7 @@ jobs:
             kubectl set image deployments lumiday-deployment lumiday-container=${{ secrets.DOCKERHUB_USERNAME }}/lumiday:${{ github.sha }} -n lumiday
             
             TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-            PR_TITLE="${{ github.event.pull_request.title }}"
+            PR_TITLE="${{ github.event.head_commit.message }}"
             
             kubectl annotate deployment/${DEPLOYMENT} \
             deploy.kubernetes.io/last-deploy="${TIMESTAMP}" \
