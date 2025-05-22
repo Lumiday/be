@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/lumiday:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/lumiday:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/arm64
@@ -40,4 +41,12 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           port: ${{ secrets.VM_PORT }}
           script: |
-            kubectl set image deployments lumiday-deployment lumiday-container=${{ secrets.DOCKERHUB_USERNAME }}/lumiday:latest --record -n lumiday
+            kubectl set image deployments lumiday-deployment lumiday-container=${{ secrets.DOCKERHUB_USERNAME }}/lumiday:${{ github.sha }} -n lumiday
+            
+            TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            PR_TITLE="${{ github.event.pull_request.title }}"
+            
+            kubectl annotate deployment/${DEPLOYMENT} \
+            deploy.kubernetes.io/last-deploy="${TIMESTAMP}" \
+            deploy.kubernetes.io/pr-title="${PR_TITLE}" \
+            --overwrite -n ${NAMESPACE}
