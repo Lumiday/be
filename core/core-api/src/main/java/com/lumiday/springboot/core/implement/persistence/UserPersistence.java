@@ -12,7 +12,7 @@ public class UserPersistence {
 
     private final UserRepository userRepository;
 
-    public UserEntity getUserEntityByDomain(UserDomain userDomain) {
+    public UserEntity mapToEntity(UserDomain userDomain) {
         return userRepository.findByEmail(userDomain.getEmail())
                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
     }

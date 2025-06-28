@@ -1,6 +1,8 @@
 package com.lumiday.springboot.core.service;
 
 import com.lumiday.springboot.core.controller.dto.CreateInvitationRequest;
+import com.lumiday.springboot.core.domain.IntroLayoutDomain;
+import com.lumiday.springboot.core.domain.InvitationDomain;
 import com.lumiday.springboot.core.domain.ThemeDomain;
 import com.lumiday.springboot.core.domain.UserDomain;
 import com.lumiday.springboot.core.implement.persistence.InvitationPersistence;
@@ -15,7 +17,11 @@ public class InvitationService {
 
     public String createInvitation(CreateInvitationRequest request) {
         UserDomain user = UserDomain.of();
+
         ThemeDomain themeDomain = ThemeDomain.of(request.theme());
-        return invitationPersistence.saveInvitation(user, themeDomain);
+        IntroLayoutDomain introLayoutDomain = IntroLayoutDomain.of(request.introLayout());
+
+        InvitationDomain invitationDomain = InvitationDomain.of(user, introLayoutDomain, themeDomain);
+        return invitationPersistence.saveInvitation(invitationDomain);
     }
 }
