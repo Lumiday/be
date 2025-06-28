@@ -7,9 +7,9 @@ public enum ThemeColor {
     IVORY("#F2ECE6"),
     LIGHT_CORAL("#FAD6D5");
 
-    private final String hexCode;
+    private final String description;
 
-    ThemeColor(String hexCode) {
-        this.hexCode = hexCode;
+    ThemeColor(String description) {
+        this.description = description;
     }
 }

@@ -5,9 +5,9 @@ public enum ThemeFontSize {
     LARGER("더 크게"),
     SMALLER("더 작게");
 
-    private final String label;
+    private final String description;
 
-    ThemeFontSize(String label) {
-        this.label = label;
+    ThemeFontSize(String description) {
+        this.description = description;
     }
 }

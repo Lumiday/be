@@ -6,9 +6,9 @@ public enum ThemePattern {
     CHECK("체크"),
     SMALL_FLOWER("작은 꽃");
 
-    private final String label;
+    private final String description;
 
-    ThemePattern(String label) {
-        this.label = label;
+    ThemePattern(String description) {
+        this.description = description;
     }
 }
