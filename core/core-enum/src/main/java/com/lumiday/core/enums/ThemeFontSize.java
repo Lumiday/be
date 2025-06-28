@@ -1,4 +1,4 @@
-package com.lumiday.core.enums.theme;
+package com.lumiday.core.enums;
 
 public enum ThemeFontSize {
     NORMAL("보통"),

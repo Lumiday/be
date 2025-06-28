@@ -1,4 +1,4 @@
-package com.lumiday.core.enums.theme;
+package com.lumiday.core.enums;
 
 public enum ThemePattern {
     NONE("없음"),

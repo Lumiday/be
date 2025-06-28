@@ -1,4 +1,4 @@
-package com.lumiday.core.enums.theme;
+package com.lumiday.core.enums;
 
 public enum ThemeFontFamily {
     PRETENDARD("프리텐다드"),

@@ -1,9 +1,9 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.core.enums.theme.ThemeColor;
-import com.lumiday.core.enums.theme.ThemeFontFamily;
-import com.lumiday.core.enums.theme.ThemeFontSize;
-import com.lumiday.core.enums.theme.ThemePattern;
+import com.lumiday.core.enums.ThemeColor;
+import com.lumiday.core.enums.ThemeFontFamily;
+import com.lumiday.core.enums.ThemeFontSize;
+import com.lumiday.core.enums.ThemePattern;
 import com.lumiday.springboot.core.domain.ThemeDomain;
 
 public record ThemeResponse(

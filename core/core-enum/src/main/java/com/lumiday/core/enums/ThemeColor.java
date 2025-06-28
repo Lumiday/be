@@ -1,4 +1,4 @@
-package com.lumiday.core.enums.theme;
+package com.lumiday.core.enums;
 
 public enum ThemeColor {
     WHITE("#FFFFFF"),
