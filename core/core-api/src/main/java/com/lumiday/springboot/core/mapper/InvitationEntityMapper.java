@@ -19,6 +19,7 @@ public class InvitationEntityMapper {
                 invitationEntity.getPersonInfoList().stream().map(PersonInfoEntityMapper::toDomain).toList(),
                 invitationEntity.getDeceasedDisplayType(),
                 WeddingDateEntityMapper.toDomain(invitationEntity.getWeddingDate()),
-                WeddingPlaceEntityMapper.toDomain(invitationEntity.getWeddingPlace()));
+                WeddingPlaceEntityMapper.toDomain(invitationEntity.getWeddingPlace()),
+                InvitationMessageEntityMapper.toDomain(invitationEntity.getInvitationMessage()));
     }
 }

@@ -5,9 +5,12 @@ import com.lumiday.core.enums.ThemeFontFamily;
 import com.lumiday.core.enums.ThemeFontSize;
 import com.lumiday.core.enums.ThemePattern;
 import com.lumiday.springboot.core.controller.dto.ThemeRequest;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ThemeDomain {
     private ThemeFontFamily fontFamily;
     private ThemeFontSize fontSize;
@@ -15,16 +18,6 @@ public class ThemeDomain {
     private ThemePattern backgroundPattern;
     private Boolean disableZoom;
     private Boolean enableScrollEffect;
-
-    private ThemeDomain(ThemeFontFamily fontFamily, ThemeFontSize fontSize, ThemeColor backgroundColor,
-                        ThemePattern backgroundPattern, Boolean disableZoom, Boolean enableScrollEffect) {
-        this.fontFamily = fontFamily;
-        this.fontSize = fontSize;
-        this.backgroundColor = backgroundColor;
-        this.backgroundPattern = backgroundPattern;
-        this.disableZoom = disableZoom;
-        this.enableScrollEffect = enableScrollEffect;
-    }
 
     public static ThemeDomain of(ThemeFontFamily fontFamily, ThemeFontSize fontSize, ThemeColor backgroundColor,
                                  ThemePattern backgroundPattern, Boolean disableZoom, Boolean enableScrollEffect) {

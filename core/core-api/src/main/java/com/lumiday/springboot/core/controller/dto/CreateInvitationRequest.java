@@ -7,6 +7,7 @@ public record CreateInvitationRequest(
         @NotNull IntroLayoutRequest introLayout,
         @NotNull PersonBasicInfoRequest personBasicInfoRequest,
         @NotNull WeddingDateRequest weddingDateRequest,
-        @NotNull WeddingPlaceRequest weddingPlaceRequest
+        @NotNull WeddingPlaceRequest weddingPlaceRequest,
+        @NotNull InvitationMessageRequest invitationMessageRequest
 ) {
 }

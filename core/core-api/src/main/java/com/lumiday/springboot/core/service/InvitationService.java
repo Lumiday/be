@@ -3,6 +3,7 @@ package com.lumiday.springboot.core.service;
 import com.lumiday.springboot.core.controller.dto.CreateInvitationRequest;
 import com.lumiday.springboot.core.domain.IntroLayoutDomain;
 import com.lumiday.springboot.core.domain.InvitationDomain;
+import com.lumiday.springboot.core.domain.InvitationMessageDomain;
 import com.lumiday.springboot.core.domain.PersonInfoDomain;
 import com.lumiday.springboot.core.domain.ThemeDomain;
 import com.lumiday.springboot.core.domain.UserDomain;
@@ -30,10 +31,12 @@ public class InvitationService {
                 .toList();
         WeddingDateDomain weddingDateDomain = WeddingDateDomain.of(request.weddingDateRequest());
         WeddingPlaceDomain weddingPlaceDomain = WeddingPlaceDomain.of(request.weddingPlaceRequest());
+        InvitationMessageDomain invitationMessageDomain = InvitationMessageDomain.of(
+                request.invitationMessageRequest());
 
         InvitationDomain invitationDomain = InvitationDomain.of(user, introLayoutDomain, themeDomain,
                 personInfoDomainList, request.personBasicInfoRequest().deceasedDisplayType(), weddingDateDomain,
-                weddingPlaceDomain);
+                weddingPlaceDomain, invitationMessageDomain);
         return invitationPersistence.saveInvitation(invitationDomain);
     }
 }

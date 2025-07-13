@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ThemeService {
+public class InvitationThemeService {
 
     private final ThemePersistence themePersistence;
 
