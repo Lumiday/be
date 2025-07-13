@@ -5,17 +5,16 @@ import com.lumiday.core.enums.ThemeFontFamily;
 import com.lumiday.core.enums.ThemeFontSize;
 import com.lumiday.core.enums.ThemePattern;
 import com.lumiday.springboot.core.controller.dto.ThemeRequest;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
 public class ThemeDomain {
-    private final ThemeFontFamily fontFamily;
-    private final ThemeFontSize fontSize;
-    private final ThemeColor backgroundColor;
-    private final ThemePattern backgroundPattern;
-    private final Boolean disableZoom;
-    private final Boolean enableScrollEffect;
+    private ThemeFontFamily fontFamily;
+    private ThemeFontSize fontSize;
+    private ThemeColor backgroundColor;
+    private ThemePattern backgroundPattern;
+    private Boolean disableZoom;
+    private Boolean enableScrollEffect;
 
     private ThemeDomain(ThemeFontFamily fontFamily, ThemeFontSize fontSize, ThemeColor backgroundColor,
                         ThemePattern backgroundPattern, Boolean disableZoom, Boolean enableScrollEffect) {
@@ -33,7 +32,7 @@ public class ThemeDomain {
                 enableScrollEffect);
     }
 
-    public static ThemeDomain of(@NotNull ThemeRequest theme) {
+    public static ThemeDomain of(ThemeRequest theme) {
         return new ThemeDomain(
                 theme.fontFamily(),
                 theme.fontSize(),

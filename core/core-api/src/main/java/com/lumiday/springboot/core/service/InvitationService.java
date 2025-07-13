@@ -6,6 +6,7 @@ import com.lumiday.springboot.core.domain.InvitationDomain;
 import com.lumiday.springboot.core.domain.PersonInfoDomain;
 import com.lumiday.springboot.core.domain.ThemeDomain;
 import com.lumiday.springboot.core.domain.UserDomain;
+import com.lumiday.springboot.core.domain.WeddingDateDomain;
 import com.lumiday.springboot.core.implement.persistence.InvitationPersistence;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,10 @@ public class InvitationService {
         List<PersonInfoDomain> personInfoDomainList = request.personBasicInfoRequest().personInfoList().stream()
                 .map(PersonInfoDomain::of)
                 .toList();
+        WeddingDateDomain weddingDateDomain = WeddingDateDomain.of(request.weddingDateRequest());
 
         InvitationDomain invitationDomain = InvitationDomain.of(user, introLayoutDomain, themeDomain,
-                personInfoDomainList, request.personBasicInfoRequest().deceasedDisplayType());
+                personInfoDomainList, request.personBasicInfoRequest().deceasedDisplayType(), weddingDateDomain);
         return invitationPersistence.saveInvitation(invitationDomain);
     }
 }

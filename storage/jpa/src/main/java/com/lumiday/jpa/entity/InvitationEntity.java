@@ -36,6 +36,10 @@ public class InvitationEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private DeceasedDisplayType deceasedDisplayType;
 
+    @OneToOne(mappedBy = "invitation")
+    private WeddingDateEntity weddingDate;
+
+
     private InvitationEntity(UserEntity user, DeceasedDisplayType deceasedDisplayType) {
         this.user = user;
         this.deceasedDisplayType = deceasedDisplayType;

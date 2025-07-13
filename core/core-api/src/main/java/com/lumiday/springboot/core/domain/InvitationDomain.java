@@ -11,18 +11,22 @@ public class InvitationDomain {
     ThemeDomain theme;
     List<PersonInfoDomain> personInfoList;
     DeceasedDisplayType deceasedDisplayType;
+    WeddingDateDomain weddingDate;
 
     private InvitationDomain(UserDomain user, IntroLayoutDomain introLayout, ThemeDomain theme,
-                             List<PersonInfoDomain> personInfoList, DeceasedDisplayType deceasedDisplayType) {
+                             List<PersonInfoDomain> personInfoList, DeceasedDisplayType deceasedDisplayType,
+                             WeddingDateDomain weddingDate) {
         this.user = user;
         this.introLayout = introLayout;
         this.theme = theme;
         this.personInfoList = personInfoList;
         this.deceasedDisplayType = deceasedDisplayType;
+        this.weddingDate = weddingDate;
     }
 
     public static InvitationDomain of(UserDomain user, IntroLayoutDomain introLayout, ThemeDomain theme,
-                                      List<PersonInfoDomain> personInfoList, DeceasedDisplayType deceasedDisplayType) {
-        return new InvitationDomain(user, introLayout, theme, personInfoList, deceasedDisplayType);
+                                      List<PersonInfoDomain> personInfoList, DeceasedDisplayType deceasedDisplayType,
+                                      WeddingDateDomain weddingDate) {
+        return new InvitationDomain(user, introLayout, theme, personInfoList, deceasedDisplayType, weddingDate);
     }
 }
