@@ -18,6 +18,7 @@ public class InvitationEntityMapper {
                 ThemeEntityMapper.toDomain(invitationEntity.getTheme()),
                 invitationEntity.getPersonInfoList().stream().map(PersonInfoEntityMapper::toDomain).toList(),
                 invitationEntity.getDeceasedDisplayType(),
-                WeddingDateEntityMapper.toDomain(invitationEntity.getWeddingDate()));
+                WeddingDateEntityMapper.toDomain(invitationEntity.getWeddingDate()),
+                WeddingPlaceEntityMapper.toDomain(invitationEntity.getWeddingPlace()));
     }
 }

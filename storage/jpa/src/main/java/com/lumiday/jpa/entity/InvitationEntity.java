@@ -39,6 +39,8 @@ public class InvitationEntity extends BaseEntity {
     @OneToOne(mappedBy = "invitation")
     private WeddingDateEntity weddingDate;
 
+    @OneToOne(mappedBy = "invitation")
+    private WeddingPlaceEntity weddingPlace;
 
     private InvitationEntity(UserEntity user, DeceasedDisplayType deceasedDisplayType) {
         this.user = user;

@@ -18,6 +18,7 @@ public class InvitationPersistence {
     private final UserPersistence userPersistence;
     private final PersonInfoPersistence personInfoPersistence;
     private final WeddingDatePersistence weddingDatePersistence;
+    private final WeddingPlacePersistence weddingPlacePersistence;
 
     private final InvitationRepository invitationRepository;
 
@@ -31,6 +32,7 @@ public class InvitationPersistence {
         themePersistence.saveTheme(invitationEntity, invitationDomain.getTheme());
         personInfoPersistence.savePersonInfoList(invitationEntity, invitationDomain.getPersonInfoList());
         weddingDatePersistence.saveWeddingDate(invitationEntity, invitationDomain.getWeddingDate());
+        weddingPlacePersistence.saveWeddingPlace(invitationEntity, invitationDomain.getWeddingPlace());
 
         return invitationEntity.getId();
     }
