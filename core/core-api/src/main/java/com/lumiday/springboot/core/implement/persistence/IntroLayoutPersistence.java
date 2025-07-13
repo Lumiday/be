@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class IntroLayoutPersistence {
 
     private final IntroLayoutRepository introLayoutRepository;
-
+    
+    @Transactional
     public void saveIntroLayout(InvitationEntity invitationEntity, IntroLayoutDomain introLayoutDomain) {
         IntroLayoutEntity introLayoutEntity = IntroLayoutEntityMapper.toEntity(invitationEntity, introLayoutDomain);
         introLayoutRepository.save(introLayoutEntity);

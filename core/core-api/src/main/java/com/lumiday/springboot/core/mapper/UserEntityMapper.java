@@ -13,4 +13,11 @@ public class UserEntityMapper {
                 domain.getUsername()
         );
     }
+
+    public static UserDomain toDomain(UserEntity entity) {
+        return UserDomain.of(
+                entity.getEmail(),
+                entity.getUsername()
+        );
+    }
 }

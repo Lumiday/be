@@ -15,7 +15,7 @@ public class ThemePersistence {
 
     private final ThemeRepository themeRepository;
 
-
+    @Transactional
     public void saveTheme(InvitationEntity invitationEntity, ThemeDomain themeDomain) {
         ThemeStyleEntity themeStyleEntity = ThemeEntityMapper.toEntity(invitationEntity, themeDomain);
         themeRepository.save(themeStyleEntity);
