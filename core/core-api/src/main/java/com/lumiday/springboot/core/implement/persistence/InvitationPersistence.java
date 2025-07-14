@@ -5,6 +5,7 @@ import com.lumiday.jpa.entity.UserEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.springboot.core.domain.InvitationDomain;
 import com.lumiday.springboot.core.mapper.InvitationEntityMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,14 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class InvitationPersistence {
 
-    private final ThemePersistence themePersistence;
-    private final IntroLayoutPersistence introLayoutPersistence;
     private final UserPersistence userPersistence;
-    private final PersonInfoPersistence personInfoPersistence;
-    private final WeddingDatePersistence weddingDatePersistence;
-    private final WeddingPlacePersistence weddingPlacePersistence;
-    private final InvitationMessagePersistence invitationMessagePersistence;
-
     private final InvitationRepository invitationRepository;
 
     @Transactional
@@ -29,20 +23,13 @@ public class InvitationPersistence {
         InvitationEntity invitationEntity = InvitationEntityMapper.toEntity(userEntity, invitationDomain);
 
         invitationRepository.save(invitationEntity);
-        introLayoutPersistence.saveIntroLayout(invitationEntity, invitationDomain.getIntroLayout());
-        themePersistence.saveTheme(invitationEntity, invitationDomain.getTheme());
-        personInfoPersistence.savePersonInfoList(invitationEntity, invitationDomain.getPersonInfoList());
-        weddingDatePersistence.saveWeddingDate(invitationEntity, invitationDomain.getWeddingDate());
-        weddingPlacePersistence.saveWeddingPlace(invitationEntity, invitationDomain.getWeddingPlace());
-        invitationMessagePersistence.saveInvitationMessage(invitationEntity, invitationDomain.getInvitationMessage());
-
         return invitationEntity.getId();
     }
 
     @Transactional(readOnly = true)
     public InvitationDomain getInvitationById(String invitationId) {
         InvitationEntity invitationEntity = invitationRepository.findById(invitationId)
-                .orElseThrow(() -> new IllegalArgumentException("청첩장을 찾을 수 없습니다."));
+                .orElseThrow(() -> new EntityNotFoundException("청첩장을 찾을 수 없습니다."));
 
         return InvitationEntityMapper.toDomain(invitationEntity);
     }

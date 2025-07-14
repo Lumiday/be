@@ -2,9 +2,10 @@ package com.lumiday.springboot.core.implement.persistence;
 
 import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.InvitationMessageEntity;
-import com.lumiday.jpa.repository.InvitationMessageRepository;
+import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.springboot.core.domain.InvitationMessageDomain;
 import com.lumiday.springboot.core.mapper.InvitationMessageEntityMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,21 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class InvitationMessagePersistence {
 
-    private final InvitationMessageRepository invitationMessageRepository;
-
-    @Transactional
-    public void saveInvitationMessage(InvitationEntity invitationEntity,
-                                      InvitationMessageDomain invitationMessageDomain) {
-        InvitationMessageEntity invitationMessageEntity = InvitationMessageEntityMapper.toEntity(invitationEntity,
-                invitationMessageDomain);
-        invitationMessageRepository.save(invitationMessageEntity);
-    }
+    private final InvitationRepository invitationRepository;
 
     @Transactional(readOnly = true)
     public InvitationMessageDomain getInvitationMessageByInvitationId(String invitationId) {
-        InvitationMessageEntity invitationMessageEntity = invitationMessageRepository.findByInvitationId(invitationId)
-                .orElseThrow(() -> new RuntimeException("테마를 찾을 수 없습니다."));
+        InvitationEntity invitationEntity = invitationRepository.findById(invitationId)
+                .orElseThrow(() -> new EntityNotFoundException("청첩장을 찾을 수 없습니다."));
 
-        return InvitationMessageEntityMapper.toDomain(invitationMessageEntity);
+        InvitationMessageEntity invitationMessage = invitationEntity.getInvitationMessage();
+
+        if (invitationMessage == null) {
+            throw new EntityNotFoundException("청첩장에 대한 초대 문구를 찾을 수 없습니다.");
+        }
+
+        return InvitationMessageEntityMapper.toDomain(invitationMessage);
     }
 }

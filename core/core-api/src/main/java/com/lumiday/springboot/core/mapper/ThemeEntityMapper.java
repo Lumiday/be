@@ -1,6 +1,5 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.ThemeStyleEntity;
 import com.lumiday.springboot.core.domain.ThemeDomain;
 
@@ -8,9 +7,8 @@ public class ThemeEntityMapper {
     private ThemeEntityMapper() {
     }
 
-    public static ThemeStyleEntity toEntity(InvitationEntity invitationEntity, ThemeDomain domain) {
+    public static ThemeStyleEntity toEntity(ThemeDomain domain) {
         return ThemeStyleEntity.of(
-                invitationEntity,
                 domain.getFontFamily(),
                 domain.getFontSize(),
                 domain.getBackgroundColor(),

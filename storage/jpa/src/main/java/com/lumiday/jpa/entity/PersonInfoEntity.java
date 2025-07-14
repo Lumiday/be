@@ -4,10 +4,11 @@ import com.lumiday.core.enums.PersonRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,9 +16,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PersonInfoEntity extends BaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
-    private InvitationEntity invitation;
+    @ManyToOne
+    @JoinColumn(name = "person_base_info_id")
+    private PersonBaseInfoEntity personBaseInfo;
+
     @Enumerated(EnumType.STRING)
     private PersonRole role;
     private String firstName;
@@ -25,18 +29,9 @@ public class PersonInfoEntity extends BaseEntity {
     private String phone;
     private Boolean isDeceased;
 
-    private PersonInfoEntity(InvitationEntity invitation, PersonRole role, String firstName, String lastName,
-                             String phone, Boolean isDeceased) {
-        this.invitation = invitation;
-        this.role = role;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.isDeceased = isDeceased;
-    }
-
-    public static PersonInfoEntity of(InvitationEntity invitation, PersonRole role, String firstName, String lastName,
+    public static PersonInfoEntity of(PersonBaseInfoEntity personBaseInfo, PersonRole role, String firstName,
+                                      String lastName,
                                       String phone, Boolean isDeceased) {
-        return new PersonInfoEntity(invitation, role, firstName, lastName, phone, isDeceased);
+        return new PersonInfoEntity(personBaseInfo, role, firstName, lastName, phone, isDeceased);
     }
 }

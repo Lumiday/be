@@ -1,6 +1,5 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.WeddingPlaceEntity;
 import com.lumiday.springboot.core.domain.WeddingPlaceDomain;
 
@@ -8,9 +7,8 @@ public class WeddingPlaceEntityMapper {
     private WeddingPlaceEntityMapper() {
     }
 
-    public static WeddingPlaceEntity toEntity(InvitationEntity invitationEntity, WeddingPlaceDomain domain) {
+    public static WeddingPlaceEntity toEntity(WeddingPlaceDomain domain) {
         return WeddingPlaceEntity.of(
-                invitationEntity,
                 domain.getName(),
                 domain.getDescription(),
                 domain.getAddress(),

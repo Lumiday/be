@@ -2,10 +2,9 @@ package com.lumiday.jpa.entity;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,20 +12,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class InvitationMessageEntity extends BaseEntity {
-    @OneToOne(fetch = FetchType.LAZY)
-    private InvitationEntity invitation;
-
     private String title;
     private String content;
 
-    private InvitationMessageEntity(InvitationEntity invitation, String title, String content) {
-        this.invitation = invitation;
-        this.title = title;
-        this.content = content;
-    }
-
-    public static InvitationMessageEntity of(InvitationEntity invitation, String title, String content) {
-        return new InvitationMessageEntity(invitation, title, content);
+    public static InvitationMessageEntity of(String title, String content) {
+        return new InvitationMessageEntity(title, content);
     }
 }

@@ -1,6 +1,5 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.WeddingDateEntity;
 import com.lumiday.springboot.core.domain.WeddingDateDomain;
 
@@ -8,9 +7,8 @@ public class WeddingDateEntityMapper {
     private WeddingDateEntityMapper() {
     }
 
-    public static WeddingDateEntity toEntity(InvitationEntity invitationEntity, WeddingDateDomain domain) {
+    public static WeddingDateEntity toEntity(WeddingDateDomain domain) {
         return WeddingDateEntity.of(
-                invitationEntity,
                 domain.getWeddingDateTime(),
                 domain.getDisplayCalendar(),
                 domain.getDisplayDDay()
