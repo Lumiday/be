@@ -11,15 +11,17 @@ import lombok.Getter;
 public class IntroLayoutDomain {
     private String layoutType;
     private PhotoFrameStyle photoFrameStyle;
+    private String imageName;
 
-    public static IntroLayoutDomain of(String layoutType, PhotoFrameStyle photoFrameStyle) {
-        return new IntroLayoutDomain(layoutType, photoFrameStyle);
+    public static IntroLayoutDomain of(String layoutType, PhotoFrameStyle photoFrameStyle, String imageName) {
+        return new IntroLayoutDomain(layoutType, photoFrameStyle, imageName);
     }
 
     public static IntroLayoutDomain of(IntroLayoutRequest introLayoutRequest) {
         return new IntroLayoutDomain(
                 introLayoutRequest.layoutType(),
-                introLayoutRequest.photoFrameStyle()
+                introLayoutRequest.photoFrameStyle(),
+                introLayoutRequest.imageName()
         );
     }
 }

@@ -19,14 +19,16 @@ public class IntroLayoutEntity extends BaseEntity {
     private String layoutType;
     @Enumerated(EnumType.STRING)
     private PhotoFrameStyle photoFrameStyle;
+    private String imageName;
 
     public static IntroLayoutEntity of(String layoutType,
-                                       PhotoFrameStyle photoFrameStyle) {
-        return new IntroLayoutEntity(layoutType, photoFrameStyle);
+                                       PhotoFrameStyle photoFrameStyle, String imageName) {
+        return new IntroLayoutEntity(layoutType, photoFrameStyle, imageName);
     }
 
-    public void update(String layoutType, PhotoFrameStyle photoFrameStyle) {
+    public void update(String layoutType, PhotoFrameStyle photoFrameStyle, String imageName) {
         this.layoutType = layoutType;
         this.photoFrameStyle = photoFrameStyle;
+        this.imageName = imageName;
     }
 }

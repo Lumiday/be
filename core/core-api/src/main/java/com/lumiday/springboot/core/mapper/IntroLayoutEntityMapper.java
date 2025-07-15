@@ -10,14 +10,16 @@ public class IntroLayoutEntityMapper {
     public static IntroLayoutEntity toEntity(IntroLayoutDomain introLayoutDomain) {
         return IntroLayoutEntity.of(
                 introLayoutDomain.getLayoutType(),
-                introLayoutDomain.getPhotoFrameStyle()
+                introLayoutDomain.getPhotoFrameStyle(),
+                introLayoutDomain.getImageName()
         );
     }
 
     public static IntroLayoutDomain toDomain(IntroLayoutEntity introLayoutEntity) {
         return IntroLayoutDomain.of(
                 introLayoutEntity.getLayoutType(),
-                introLayoutEntity.getPhotoFrameStyle()
+                introLayoutEntity.getPhotoFrameStyle(),
+                introLayoutEntity.getImageName()
         );
     }
 }

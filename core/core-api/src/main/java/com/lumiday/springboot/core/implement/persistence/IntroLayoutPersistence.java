@@ -22,7 +22,8 @@ public class IntroLayoutPersistence {
                 .orElseThrow(() -> new EntityNotFoundException("초대장을 찾을 수 없습니다."));
 
         IntroLayoutEntity introLayoutEntity = invitation.getIntroLayout();
-        introLayoutEntity.update(introLayoutDomain.getLayoutType(), introLayoutDomain.getPhotoFrameStyle());
+        introLayoutEntity.update(introLayoutDomain.getLayoutType(), introLayoutDomain.getPhotoFrameStyle(),
+                introLayoutDomain.getImageName());
     }
 
     @Transactional(readOnly = true)

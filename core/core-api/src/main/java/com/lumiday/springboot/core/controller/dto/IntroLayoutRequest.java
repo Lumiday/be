@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record IntroLayoutRequest(
         @NotNull String layoutType,
-        @NotNull PhotoFrameStyle photoFrameStyle
+        @NotNull PhotoFrameStyle photoFrameStyle,
+        String imageName
 ) {
 }
