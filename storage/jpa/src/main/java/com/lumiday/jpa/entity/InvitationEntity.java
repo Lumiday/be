@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class InvitationEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -46,26 +45,58 @@ public class InvitationEntity extends BaseEntity {
     @JoinColumn(name = "invitation_message_id")
     private InvitationMessageEntity invitationMessage;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "background_music_id")
+    private BackgroundMusicEntity backgroundMusic;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "account_info_id")
+    private AccountInfoEntity accountInfo;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "gallery_id")
+    private GalleryEntity gallery;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "attendance_check_id")
+    private AttendanceCheckEntity attendanceCheck;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ending_id")
+    private EndingEntity ending;
+
     private InvitationEntity(UserEntity user) {
         this.user = user;
     }
 
-    public static InvitationEntity of(UserEntity user) {
-        return new InvitationEntity(user);
+    @Builder
+    public InvitationEntity(UserEntity user, IntroLayoutEntity introLayout, ThemeStyleEntity theme,
+                            PersonBaseInfoEntity personBaseInfo, WeddingDateEntity weddingDate,
+                            WeddingPlaceEntity weddingPlace, InvitationMessageEntity invitationMessage,
+                            BackgroundMusicEntity backgroundMusic, AccountInfoEntity accountInfo, GalleryEntity gallery,
+                            AttendanceCheckEntity attendanceCheck, EndingEntity ending) {
+
+        if (user == null || introLayout == null || theme == null || personBaseInfo == null || weddingDate == null
+                || weddingPlace == null || invitationMessage == null) {
+            throw new IllegalArgumentException(
+                    "모든 필수 필드는 null이 될 수 없습니다. user, introLayout, theme, personBaseInfo, weddingDate, weddingPlace, invitationMessage는 필수입니다.");
+        }
+
+        this.user = user;
+        this.introLayout = introLayout;
+        this.theme = theme;
+        this.personBaseInfo = personBaseInfo;
+        this.weddingDate = weddingDate;
+        this.weddingPlace = weddingPlace;
+        this.invitationMessage = invitationMessage;
+        this.backgroundMusic = backgroundMusic;
+        this.accountInfo = accountInfo;
+        this.gallery = gallery;
+        this.attendanceCheck = attendanceCheck;
+        this.ending = ending;
     }
 
-    public static InvitationEntity of(UserEntity user, IntroLayoutEntity introLayout,
-                                      ThemeStyleEntity theme, PersonBaseInfoEntity personBaseInfo,
-                                      WeddingDateEntity weddingDate, WeddingPlaceEntity weddingPlace,
-                                      InvitationMessageEntity invitationMessage) {
-        return new InvitationEntity(
-                user,
-                introLayout,
-                theme,
-                personBaseInfo,
-                weddingDate,
-                weddingPlace,
-                invitationMessage
-        );
+    public static InvitationEntity of(UserEntity user) {
+        return new InvitationEntity(user);
     }
 }

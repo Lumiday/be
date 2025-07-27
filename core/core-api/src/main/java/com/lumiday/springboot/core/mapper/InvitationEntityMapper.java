@@ -13,15 +13,15 @@ public class InvitationEntityMapper {
     }
 
     public static InvitationEntity toEntity(UserEntity userEntity, InvitationDomain invitationDomain) {
-        return InvitationEntity.of(
-                userEntity,
-                IntroLayoutEntityMapper.toEntity(invitationDomain.getIntroLayout()),
-                ThemeEntityMapper.toEntity(invitationDomain.getTheme()),
-                PersonBaseInfoEntityMapper.toEntity(invitationDomain.getPersonBaseInfo()),
-                WeddingDateEntityMapper.toEntity(invitationDomain.getWeddingDate()),
-                WeddingPlaceEntityMapper.toEntity(invitationDomain.getWeddingPlace()),
-                InvitationMessageEntityMapper.toEntity(invitationDomain.getInvitationMessage())
-        );
+        return InvitationEntity.builder()
+                .user(userEntity)
+                .introLayout(IntroLayoutEntityMapper.toEntity(invitationDomain.getIntroLayout()))
+                .theme(ThemeEntityMapper.toEntity(invitationDomain.getTheme()))
+                .personBaseInfo(PersonBaseInfoEntityMapper.toEntity(invitationDomain.getPersonBaseInfo()))
+                .weddingDate(WeddingDateEntityMapper.toEntity(invitationDomain.getWeddingDate()))
+                .weddingPlace(WeddingPlaceEntityMapper.toEntity(invitationDomain.getWeddingPlace()))
+                .invitationMessage(InvitationMessageEntityMapper.toEntity(invitationDomain.getInvitationMessage()))
+                .build();
     }
 
     public static InvitationDomain toDomain(InvitationEntity invitationEntity) {
