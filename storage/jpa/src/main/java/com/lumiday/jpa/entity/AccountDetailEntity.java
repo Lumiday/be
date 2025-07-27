@@ -18,9 +18,20 @@ public class AccountDetailEntity extends BaseEntity {
     private String ownerName;
     private String bankName;
     private String accountNumber;
-    private boolean kakaoPayEnabled;
+    private Boolean kakaoPayEnabled;
 
     @ManyToOne
     @JoinColumn(name = "account_group_id")
     private AccountGroupEntity accountGroup;
+
+    public static AccountDetailEntity of(String ownerName, String bankName, String accountNumber,
+                                         Boolean kakaoPayEnabled) {
+        return new AccountDetailEntity(
+                ownerName,
+                bankName,
+                accountNumber,
+                kakaoPayEnabled,
+                null
+        );
+    }
 }

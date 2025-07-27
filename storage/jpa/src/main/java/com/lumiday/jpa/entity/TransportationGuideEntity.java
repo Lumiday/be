@@ -16,4 +16,8 @@ public class TransportationGuideEntity extends BaseEntity {
 
     private String transportationName;
     private String guideDescription;
+
+    public static TransportationGuideEntity of(String transportationName, String guideDescription) {
+        return new TransportationGuideEntity(transportationName, guideDescription);
+    }
 }

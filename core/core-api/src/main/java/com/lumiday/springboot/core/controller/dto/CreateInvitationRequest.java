@@ -8,6 +8,12 @@ public record CreateInvitationRequest(
         @NotNull PersonBasicInfoRequest personBasicInfoRequest,
         @NotNull WeddingDateRequest weddingDateRequest,
         @NotNull WeddingPlaceRequest weddingPlaceRequest,
-        @NotNull InvitationMessageRequest invitationMessageRequest
+        @NotNull InvitationMessageRequest invitationMessageRequest,
+        BackgroundMusicRequest backgroundMusicRequest,
+        TransportationGuideRequest transportationGuideRequest,
+        AccountInfoRequest accountInfoRequest,
+        GalleryRequest galleryRequest,
+        AttendanceCheckRequest attendanceCheckRequest,
+        EndingRequest endingRequest
 ) {
 }

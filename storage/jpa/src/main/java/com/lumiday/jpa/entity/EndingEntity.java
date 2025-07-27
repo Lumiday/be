@@ -17,4 +17,8 @@ public class EndingEntity extends BaseEntity {
     private String title;
     private String content;
     private String imageName;
+
+    public static EndingEntity of(String title, String content, String imageName) {
+        return new EndingEntity(title, content, imageName);
+    }
 }

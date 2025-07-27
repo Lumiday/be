@@ -19,4 +19,13 @@ public class GalleryEntity extends BaseEntity {
     private GalleryType type;
     private Boolean usePopUpView;
     private List<String> images;
+
+    public static GalleryEntity of(String name, GalleryType type, Boolean usePopUpView, List<String> images) {
+        return new GalleryEntity(
+                name,
+                type,
+                usePopUpView,
+                images
+        );
+    }
 }

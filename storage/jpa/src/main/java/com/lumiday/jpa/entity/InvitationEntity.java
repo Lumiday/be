@@ -50,6 +50,11 @@ public class InvitationEntity extends BaseEntity {
     private BackgroundMusicEntity backgroundMusic;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "transportation_guide_id")
+    private TransportationGuideEntity transportationGuide;
+
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_info_id")
     private AccountInfoEntity accountInfo;
 
@@ -73,7 +78,8 @@ public class InvitationEntity extends BaseEntity {
     public InvitationEntity(UserEntity user, IntroLayoutEntity introLayout, ThemeStyleEntity theme,
                             PersonBaseInfoEntity personBaseInfo, WeddingDateEntity weddingDate,
                             WeddingPlaceEntity weddingPlace, InvitationMessageEntity invitationMessage,
-                            BackgroundMusicEntity backgroundMusic, AccountInfoEntity accountInfo, GalleryEntity gallery,
+                            BackgroundMusicEntity backgroundMusic, TransportationGuideEntity transportationGuide,
+                            AccountInfoEntity accountInfo, GalleryEntity gallery,
                             AttendanceCheckEntity attendanceCheck, EndingEntity ending) {
 
         if (user == null || introLayout == null || theme == null || personBaseInfo == null || weddingDate == null
@@ -90,6 +96,7 @@ public class InvitationEntity extends BaseEntity {
         this.weddingPlace = weddingPlace;
         this.invitationMessage = invitationMessage;
         this.backgroundMusic = backgroundMusic;
+        this.transportationGuide = transportationGuide;
         this.accountInfo = accountInfo;
         this.gallery = gallery;
         this.attendanceCheck = attendanceCheck;

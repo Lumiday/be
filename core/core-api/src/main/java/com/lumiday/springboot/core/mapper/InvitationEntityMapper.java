@@ -25,12 +25,21 @@ public class InvitationEntityMapper {
     }
 
     public static InvitationDomain toDomain(InvitationEntity invitationEntity) {
-        return InvitationDomain.of(UserEntityMapper.toDomain(invitationEntity.getUser()),
-                IntroLayoutEntityMapper.toDomain(invitationEntity.getIntroLayout()),
-                ThemeEntityMapper.toDomain(invitationEntity.getTheme()),
-                PersonBaseInfoEntityMapper.toDomain(invitationEntity.getPersonBaseInfo()),
-                WeddingDateEntityMapper.toDomain(invitationEntity.getWeddingDate()),
-                WeddingPlaceEntityMapper.toDomain(invitationEntity.getWeddingPlace()),
-                InvitationMessageEntityMapper.toDomain(invitationEntity.getInvitationMessage()));
+        return InvitationDomain.builder()
+                .user(UserEntityMapper.toDomain(invitationEntity.getUser()))
+                .introLayout(IntroLayoutEntityMapper.toDomain(invitationEntity.getIntroLayout()))
+                .theme(ThemeEntityMapper.toDomain(invitationEntity.getTheme()))
+                .personBaseInfo(PersonBaseInfoEntityMapper.toDomain(invitationEntity.getPersonBaseInfo()))
+                .weddingDate(WeddingDateEntityMapper.toDomain(invitationEntity.getWeddingDate()))
+                .weddingPlace(WeddingPlaceEntityMapper.toDomain(invitationEntity.getWeddingPlace()))
+                .invitationMessage(InvitationMessageEntityMapper.toDomain(invitationEntity.getInvitationMessage()))
+                .backgroundMusic(BackgroundMusicEntityMapper.toDomain(invitationEntity.getBackgroundMusic()))
+                .transportationGuide(
+                        TransportationGuideEntityMapper.toDomain(invitationEntity.getTransportationGuide()))
+                .accountInfo(AccountInfoEntityMapper.toDomain(invitationEntity.getAccountInfo()))
+                .gallery(GalleryEntityMapper.toDomain(invitationEntity.getGallery()))
+                .attendanceCheck(AttendanceCheckEntityMapper.toDomain(invitationEntity.getAttendanceCheck()))
+                .ending(EndingEntityMapper.toDomain(invitationEntity.getEnding()))
+                .build();
     }
 }

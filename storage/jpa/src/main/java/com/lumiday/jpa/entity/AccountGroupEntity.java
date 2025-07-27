@@ -21,4 +21,8 @@ public class AccountGroupEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "accountGroup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountDetailEntity> accountDetails = new ArrayList<>();
+
+    public static AccountGroupEntity of(String groupName, List<AccountDetailEntity> accountDetails) {
+        return new AccountGroupEntity(groupName, accountDetails);
+    }
 }

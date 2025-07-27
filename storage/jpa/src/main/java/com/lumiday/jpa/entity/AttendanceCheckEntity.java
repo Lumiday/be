@@ -18,4 +18,8 @@ public class AttendanceCheckEntity extends BaseEntity {
     private String content;
     private String buttonText;
     private AttendanceType type;
+
+    public static AttendanceCheckEntity of(String title, String content, String buttonText, AttendanceType type) {
+        return new AttendanceCheckEntity(title, content, buttonText, type);
+    }
 }

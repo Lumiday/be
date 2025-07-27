@@ -16,4 +16,11 @@ public class BackgroundMusicEntity extends BaseEntity {
 
     private String musicName;
     private Boolean autoPlay;
+
+    public static BackgroundMusicEntity of(String musicName, Boolean autoPlay) {
+        return new BackgroundMusicEntity(
+                musicName,
+                autoPlay
+        );
+    }
 }

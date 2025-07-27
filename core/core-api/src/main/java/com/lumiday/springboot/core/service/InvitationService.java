@@ -1,11 +1,17 @@
 package com.lumiday.springboot.core.service;
 
 import com.lumiday.springboot.core.controller.dto.CreateInvitationRequest;
+import com.lumiday.springboot.core.domain.AccountInfoDomain;
+import com.lumiday.springboot.core.domain.AttendanceCheckDomain;
+import com.lumiday.springboot.core.domain.BackgroundMusicDomain;
+import com.lumiday.springboot.core.domain.EndingDomain;
+import com.lumiday.springboot.core.domain.GalleryDomain;
 import com.lumiday.springboot.core.domain.IntroLayoutDomain;
 import com.lumiday.springboot.core.domain.InvitationDomain;
 import com.lumiday.springboot.core.domain.InvitationMessageDomain;
 import com.lumiday.springboot.core.domain.PersonBaseInfoDomain;
 import com.lumiday.springboot.core.domain.ThemeDomain;
+import com.lumiday.springboot.core.domain.TransportationGuideDomain;
 import com.lumiday.springboot.core.domain.UserDomain;
 import com.lumiday.springboot.core.domain.WeddingDateDomain;
 import com.lumiday.springboot.core.domain.WeddingPlaceDomain;
@@ -29,11 +35,29 @@ public class InvitationService {
         WeddingPlaceDomain weddingPlaceDomain = WeddingPlaceDomain.of(request.weddingPlaceRequest());
         InvitationMessageDomain invitationMessageDomain = InvitationMessageDomain.of(
                 request.invitationMessageRequest());
+        BackgroundMusicDomain backgroundMusicDomain = BackgroundMusicDomain.of(request.backgroundMusicRequest());
+        TransportationGuideDomain transportationGuideDomain = TransportationGuideDomain.of(
+                request.transportationGuideRequest());
+        AccountInfoDomain accountInfoDomain = AccountInfoDomain.of(request.accountInfoRequest());
+        GalleryDomain galleryDomain = GalleryDomain.of(request.galleryRequest());
+        AttendanceCheckDomain attendanceCheckDomain = AttendanceCheckDomain.of(request.attendanceCheckRequest());
+        EndingDomain endingDomain = EndingDomain.of(request.endingRequest());
 
-        InvitationDomain invitationDomain = InvitationDomain.of(
-                user, introLayoutDomain, themeDomain,
-                personBaseInfoDomain, weddingDateDomain,
-                weddingPlaceDomain, invitationMessageDomain);
+        InvitationDomain invitationDomain = InvitationDomain.builder()
+                .user(user)
+                .theme(themeDomain)
+                .introLayout(introLayoutDomain)
+                .personBaseInfo(personBaseInfoDomain)
+                .weddingDate(weddingDateDomain)
+                .weddingPlace(weddingPlaceDomain)
+                .invitationMessage(invitationMessageDomain)
+                .backgroundMusic(backgroundMusicDomain)
+                .transportationGuide(transportationGuideDomain)
+                .accountInfo(accountInfoDomain)
+                .gallery(galleryDomain)
+                .attendanceCheck(attendanceCheckDomain)
+                .ending(endingDomain)
+                .build();
         return invitationPersistence.saveInvitation(invitationDomain);
     }
 }

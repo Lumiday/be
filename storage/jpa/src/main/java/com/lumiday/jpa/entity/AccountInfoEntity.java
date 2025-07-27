@@ -29,4 +29,9 @@ public class AccountInfoEntity extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bride_account_group_id")
     private AccountGroupEntity brideAccountGroup;
+
+    public static AccountInfoEntity of(String title, String content, AccountDesignType designType,
+                                       AccountGroupEntity groomAccountGroup, AccountGroupEntity brideAccountGroup) {
+        return new AccountInfoEntity(title, content, designType, groomAccountGroup, brideAccountGroup);
+    }
 }
