@@ -1,6 +1,7 @@
 package com.lumiday.springboot.core.service;
 
 import com.lumiday.springboot.core.controller.dto.CreateInvitationRequest;
+import com.lumiday.springboot.core.controller.dto.InvitationResponse;
 import com.lumiday.springboot.core.domain.AccountInfoDomain;
 import com.lumiday.springboot.core.domain.AttendanceCheckDomain;
 import com.lumiday.springboot.core.domain.BackgroundMusicDomain;
@@ -30,18 +31,18 @@ public class InvitationService {
 
         ThemeDomain themeDomain = ThemeDomain.of(request.theme());
         IntroLayoutDomain introLayoutDomain = IntroLayoutDomain.of(request.introLayout());
-        PersonBaseInfoDomain personBaseInfoDomain = PersonBaseInfoDomain.of(request.personBasicInfoRequest());
-        WeddingDateDomain weddingDateDomain = WeddingDateDomain.of(request.weddingDateRequest());
-        WeddingPlaceDomain weddingPlaceDomain = WeddingPlaceDomain.of(request.weddingPlaceRequest());
+        PersonBaseInfoDomain personBaseInfoDomain = PersonBaseInfoDomain.of(request.personBasicInfo());
+        WeddingDateDomain weddingDateDomain = WeddingDateDomain.of(request.weddingDate());
+        WeddingPlaceDomain weddingPlaceDomain = WeddingPlaceDomain.of(request.weddingPlace());
         InvitationMessageDomain invitationMessageDomain = InvitationMessageDomain.of(
-                request.invitationMessageRequest());
-        BackgroundMusicDomain backgroundMusicDomain = BackgroundMusicDomain.of(request.backgroundMusicRequest());
+                request.invitationMessage());
+        BackgroundMusicDomain backgroundMusicDomain = BackgroundMusicDomain.of(request.backgroundMusic());
         TransportationGuideDomain transportationGuideDomain = TransportationGuideDomain.of(
-                request.transportationGuideRequest());
-        AccountInfoDomain accountInfoDomain = AccountInfoDomain.of(request.accountInfoRequest());
-        GalleryDomain galleryDomain = GalleryDomain.of(request.galleryRequest());
-        AttendanceCheckDomain attendanceCheckDomain = AttendanceCheckDomain.of(request.attendanceCheckRequest());
-        EndingDomain endingDomain = EndingDomain.of(request.endingRequest());
+                request.transportationGuide());
+        AccountInfoDomain accountInfoDomain = AccountInfoDomain.of(request.accountInfo());
+        GalleryDomain galleryDomain = GalleryDomain.of(request.gallery());
+        AttendanceCheckDomain attendanceCheckDomain = AttendanceCheckDomain.of(request.attendanceCheck());
+        EndingDomain endingDomain = EndingDomain.of(request.ending());
 
         InvitationDomain invitationDomain = InvitationDomain.builder()
                 .user(user)
@@ -59,5 +60,10 @@ public class InvitationService {
                 .ending(endingDomain)
                 .build();
         return invitationPersistence.saveInvitation(invitationDomain);
+    }
+
+    public InvitationResponse getInvitationBy(String invitationId) {
+        InvitationDomain invitation = invitationPersistence.getInvitationById(invitationId);
+        return InvitationResponse.of(invitation);
     }
 }

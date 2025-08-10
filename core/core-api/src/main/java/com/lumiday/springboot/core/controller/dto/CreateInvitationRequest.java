@@ -5,15 +5,15 @@ import jakarta.validation.constraints.NotNull;
 public record CreateInvitationRequest(
         @NotNull ThemeRequest theme,
         @NotNull IntroLayoutRequest introLayout,
-        @NotNull PersonBasicInfoRequest personBasicInfoRequest,
-        @NotNull WeddingDateRequest weddingDateRequest,
-        @NotNull WeddingPlaceRequest weddingPlaceRequest,
-        @NotNull InvitationMessageRequest invitationMessageRequest,
-        BackgroundMusicRequest backgroundMusicRequest,
-        TransportationGuideRequest transportationGuideRequest,
-        AccountInfoRequest accountInfoRequest,
-        GalleryRequest galleryRequest,
-        AttendanceCheckRequest attendanceCheckRequest,
-        EndingRequest endingRequest
+        @NotNull PersonBasicInfoRequest personBasicInfo,
+        @NotNull WeddingDateRequest weddingDate,
+        @NotNull WeddingPlaceRequest weddingPlace,
+        @NotNull InvitationMessageRequest invitationMessage,
+        BackgroundMusicRequest backgroundMusic,
+        TransportationGuideRequest transportationGuide,
+        AccountInfoRequest accountInfo,
+        GalleryRequest gallery,
+        AttendanceCheckRequest attendanceCheck,
+        EndingRequest ending
 ) {
 }
