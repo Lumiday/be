@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.InvitationMessageDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
 
 public record InvitationMessageResponse(
         String title,

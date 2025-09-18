@@ -1,14 +1,14 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.AccountInfoEntity;
-import com.lumiday.springboot.core.domain.AccountInfoDomain;
+import com.lumiday.jpa.vo.AccountInfo;
+import com.lumiday.springboot.core.domain.invitation.vo.AccountInfoDomain;
 
 public class AccountInfoEntityMapper {
     private AccountInfoEntityMapper() {
     }
 
-    public static AccountInfoEntity toEntity(AccountInfoDomain accountInfoDomain) {
-        return AccountInfoEntity.of(
+    public static AccountInfo toEntity(AccountInfoDomain accountInfoDomain) {
+        return AccountInfo.of(
                 accountInfoDomain.getTitle(),
                 accountInfoDomain.getContent(),
                 accountInfoDomain.getDesignType(),
@@ -17,13 +17,13 @@ public class AccountInfoEntityMapper {
         );
     }
 
-    public static AccountInfoDomain toDomain(AccountInfoEntity accountInfoEntity) {
+    public static AccountInfoDomain toDomain(AccountInfo accountInfo) {
         return AccountInfoDomain.of(
-                accountInfoEntity.getTitle(),
-                accountInfoEntity.getContent(),
-                accountInfoEntity.getDesignType(),
-                AccountGroupEntityMapper.toDomain(accountInfoEntity.getGroomAccountGroup()),
-                AccountGroupEntityMapper.toDomain(accountInfoEntity.getBrideAccountGroup())
+                accountInfo.getTitle(),
+                accountInfo.getContent(),
+                accountInfo.getDesignType(),
+                AccountGroupEntityMapper.toDomain(accountInfo.getGroomAccountGroup()),
+                AccountGroupEntityMapper.toDomain(accountInfo.getBrideAccountGroup())
         );
     }
 }

@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.PhotoFrameStyle;
-import com.lumiday.springboot.core.domain.IntroLayoutDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
 
 public record IntroLayOutResponse(
         String layoutType,

@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.PersonRole;
-import com.lumiday.springboot.core.domain.PersonInfoDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.PersonInfoDomain;
 
 public record PersonInfoResponse(
         PersonRole role,

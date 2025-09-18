@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.service;
 
 import com.lumiday.springboot.core.controller.dto.InvitationMessageResponse;
-import com.lumiday.springboot.core.domain.InvitationMessageDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
 import com.lumiday.springboot.core.implement.persistence.InvitationMessagePersistence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

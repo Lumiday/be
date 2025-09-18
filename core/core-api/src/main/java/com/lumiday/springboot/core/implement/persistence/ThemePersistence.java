@@ -1,9 +1,9 @@
 package com.lumiday.springboot.core.implement.persistence;
 
 import com.lumiday.jpa.entity.InvitationEntity;
-import com.lumiday.jpa.entity.ThemeStyleEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
-import com.lumiday.springboot.core.domain.ThemeDomain;
+import com.lumiday.jpa.vo.ThemeStyle;
+import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
 import com.lumiday.springboot.core.mapper.ThemeEntityMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class ThemePersistence {
         InvitationEntity invitationEntity = invitationRepository.findById(invitationId)
                 .orElseThrow(() -> new EntityNotFoundException("청첩장을 찾을 수 없습니다."));
 
-        ThemeStyleEntity themeEntity = invitationEntity.getTheme();
+        ThemeStyle themeEntity = invitationEntity.getTheme();
 
         if (themeEntity == null) {
             throw new EntityNotFoundException("청첩장에 대한 테마를 찾을 수 없습니다.");

@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.GalleryType;
-import com.lumiday.springboot.core.domain.GalleryDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.GalleryDomain;
 import java.util.List;
 
 public record GalleryResponse(

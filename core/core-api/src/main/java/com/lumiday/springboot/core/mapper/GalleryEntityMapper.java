@@ -1,15 +1,15 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.GalleryEntity;
-import com.lumiday.springboot.core.domain.GalleryDomain;
+import com.lumiday.jpa.vo.Gallery;
+import com.lumiday.springboot.core.domain.invitation.vo.GalleryDomain;
 
 public class GalleryEntityMapper {
 
     private GalleryEntityMapper() {
     }
 
-    public static GalleryEntity toEntity(GalleryDomain domain) {
-        return GalleryEntity.of(
+    public static Gallery toEntity(GalleryDomain domain) {
+        return Gallery.of(
                 domain.getName(),
                 domain.getType(),
                 domain.getUsePopUpView(),
@@ -17,7 +17,7 @@ public class GalleryEntityMapper {
         );
     }
 
-    public static GalleryDomain toDomain(GalleryEntity entity) {
+    public static GalleryDomain toDomain(Gallery entity) {
         return GalleryDomain.of(
                 entity.getName(),
                 entity.getType(),

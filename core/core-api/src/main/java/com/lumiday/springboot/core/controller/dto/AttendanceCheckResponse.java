@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.AttendanceType;
-import com.lumiday.springboot.core.domain.AttendanceCheckDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.AttendanceCheckDomain;
 
 public record AttendanceCheckResponse(String title,
                                       String content,

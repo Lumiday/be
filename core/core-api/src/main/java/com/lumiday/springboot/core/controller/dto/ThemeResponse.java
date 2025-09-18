@@ -4,7 +4,7 @@ import com.lumiday.core.enums.ThemeColor;
 import com.lumiday.core.enums.ThemeFontFamily;
 import com.lumiday.core.enums.ThemeFontSize;
 import com.lumiday.core.enums.ThemePattern;
-import com.lumiday.springboot.core.domain.ThemeDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
 
 public record ThemeResponse(
         ThemeFontFamily fontFamily,

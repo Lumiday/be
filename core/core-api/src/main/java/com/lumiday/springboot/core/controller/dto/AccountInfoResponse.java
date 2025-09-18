@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.AccountDesignType;
-import com.lumiday.springboot.core.domain.AccountInfoDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.AccountInfoDomain;
 
 public record AccountInfoResponse(String title, String content, AccountDesignType designType,
                                   AccountGroupResponse groomAccountGroup, AccountGroupResponse brideAccountGroup) {

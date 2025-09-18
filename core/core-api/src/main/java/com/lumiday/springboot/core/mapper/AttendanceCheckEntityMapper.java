@@ -1,24 +1,24 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.AttendanceCheckEntity;
-import com.lumiday.springboot.core.domain.AttendanceCheckDomain;
+import com.lumiday.jpa.vo.AttendanceCheck;
+import com.lumiday.springboot.core.domain.invitation.vo.AttendanceCheckDomain;
 
 public class AttendanceCheckEntityMapper {
 
     private AttendanceCheckEntityMapper() {
     }
 
-    public static AttendanceCheckDomain toDomain(AttendanceCheckEntity attendanceCheckEntity) {
+    public static AttendanceCheckDomain toDomain(AttendanceCheck attendanceCheck) {
         return AttendanceCheckDomain.of(
-                attendanceCheckEntity.getTitle(),
-                attendanceCheckEntity.getContent(),
-                attendanceCheckEntity.getButtonText(),
-                attendanceCheckEntity.getType()
+                attendanceCheck.getTitle(),
+                attendanceCheck.getContent(),
+                attendanceCheck.getButtonText(),
+                attendanceCheck.getType()
         );
     }
 
-    public static AttendanceCheckEntity toEntity(AttendanceCheckDomain attendanceCheckDomain) {
-        return AttendanceCheckEntity.of(
+    public static AttendanceCheck toEntity(AttendanceCheckDomain attendanceCheckDomain) {
+        return AttendanceCheck.of(
                 attendanceCheckDomain.getTitle(),
                 attendanceCheckDomain.getContent(),
                 attendanceCheckDomain.getButtonText(),

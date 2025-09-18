@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.WeddingDateDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.WeddingDateDomain;
 import java.time.LocalDateTime;
 
 public record WeddingDateResponse(

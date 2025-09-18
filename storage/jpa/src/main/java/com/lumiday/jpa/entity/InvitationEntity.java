@@ -1,11 +1,22 @@
 package com.lumiday.jpa.entity;
 
-import jakarta.persistence.CascadeType;
+import com.lumiday.jpa.vo.AccountInfo;
+import com.lumiday.jpa.vo.AttendanceCheck;
+import com.lumiday.jpa.vo.BackgroundMusic;
+import com.lumiday.jpa.vo.Ending;
+import com.lumiday.jpa.vo.Gallery;
+import com.lumiday.jpa.vo.IntroLayout;
+import com.lumiday.jpa.vo.InvitationMessage;
+import com.lumiday.jpa.vo.PersonBaseInfo;
+import com.lumiday.jpa.vo.ThemeStyle;
+import com.lumiday.jpa.vo.TransportationGuide;
+import com.lumiday.jpa.vo.WeddingDate;
+import com.lumiday.jpa.vo.WeddingPlace;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -21,66 +32,51 @@ public class InvitationEntity extends BaseEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "intro_layout_id")
-    private IntroLayoutEntity introLayout;
+    @Embedded
+    private IntroLayout introLayout;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "theme_style_id")
-    private ThemeStyleEntity theme;
+    @Embedded
+    private ThemeStyle theme;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "person_base_info_id")
-    private PersonBaseInfoEntity personBaseInfo;
+    @Embedded
+    private PersonBaseInfo personBaseInfo;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "wedding_date_id")
-    private WeddingDateEntity weddingDate;
+    @Embedded
+    private WeddingDate weddingDate;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "wedding_place_id")
-    private WeddingPlaceEntity weddingPlace;
+    @Embedded
+    private WeddingPlace weddingPlace;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "invitation_message_id")
-    private InvitationMessageEntity invitationMessage;
+    @Embedded
+    private InvitationMessage invitationMessage;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "background_music_id")
-    private BackgroundMusicEntity backgroundMusic;
+    @Embedded
+    private BackgroundMusic backgroundMusic;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "transportation_guide_id")
-    private TransportationGuideEntity transportationGuide;
+    @Embedded
+    private TransportationGuide transportationGuide;
 
+    @Embedded
+    private AccountInfo accountInfo;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "account_info_id")
-    private AccountInfoEntity accountInfo;
+    @Embedded
+    private Gallery gallery;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "gallery_id")
-    private GalleryEntity gallery;
+    @Embedded
+    private AttendanceCheck attendanceCheck;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "attendance_check_id")
-    private AttendanceCheckEntity attendanceCheck;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ending_id")
-    private EndingEntity ending;
+    @Embedded
+    private Ending ending;
 
     private InvitationEntity(UserEntity user) {
         this.user = user;
     }
 
     @Builder
-    public InvitationEntity(UserEntity user, IntroLayoutEntity introLayout, ThemeStyleEntity theme,
-                            PersonBaseInfoEntity personBaseInfo, WeddingDateEntity weddingDate,
-                            WeddingPlaceEntity weddingPlace, InvitationMessageEntity invitationMessage,
-                            BackgroundMusicEntity backgroundMusic, TransportationGuideEntity transportationGuide,
-                            AccountInfoEntity accountInfo, GalleryEntity gallery,
-                            AttendanceCheckEntity attendanceCheck, EndingEntity ending) {
+    public InvitationEntity(UserEntity user, IntroLayout introLayout, ThemeStyle theme, PersonBaseInfo personBaseInfo,
+                            WeddingDate weddingDate, WeddingPlace weddingPlace, InvitationMessage invitationMessage,
+                            BackgroundMusic backgroundMusic, TransportationGuide transportationGuide,
+                            AccountInfo accountInfo, Gallery gallery, AttendanceCheck attendanceCheck, Ending ending) {
 
         if (user == null || introLayout == null || theme == null || personBaseInfo == null || weddingDate == null
                 || weddingPlace == null || invitationMessage == null) {

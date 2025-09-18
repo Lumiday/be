@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.DeceasedDisplayType;
-import com.lumiday.springboot.core.domain.PersonBaseInfoDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.PersonBaseInfoDomain;
 import java.util.List;
 
 public record PersonBasicInfoResponse(

@@ -1,16 +1,14 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.PersonBaseInfoEntity;
-import com.lumiday.jpa.entity.PersonInfoEntity;
-import com.lumiday.springboot.core.domain.PersonInfoDomain;
+import com.lumiday.jpa.vo.PersonInfo;
+import com.lumiday.springboot.core.domain.invitation.vo.PersonInfoDomain;
 
 public class PersonInfoEntityMapper {
     private PersonInfoEntityMapper() {
     }
 
-    public static PersonInfoEntity toEntity(PersonBaseInfoEntity entity, PersonInfoDomain domain) {
-        return PersonInfoEntity.of(
-                entity,
+    public static PersonInfo toEntity(PersonInfoDomain domain) {
+        return PersonInfo.of(
                 domain.getRole(),
                 domain.getFirstName(),
                 domain.getLastName(),
@@ -19,7 +17,7 @@ public class PersonInfoEntityMapper {
         );
     }
 
-    public static PersonInfoDomain toDomain(PersonInfoEntity entity) {
+    public static PersonInfoDomain toDomain(PersonInfo entity) {
         return PersonInfoDomain.of(
                 entity.getFirstName(),
                 entity.getLastName(),

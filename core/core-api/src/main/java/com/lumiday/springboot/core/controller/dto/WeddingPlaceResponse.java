@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.PlaceMapType;
-import com.lumiday.springboot.core.domain.WeddingPlaceDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.WeddingPlaceDomain;
 
 public record WeddingPlaceResponse(
         String name,

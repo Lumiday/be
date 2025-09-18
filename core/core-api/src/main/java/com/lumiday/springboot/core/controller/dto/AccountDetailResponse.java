@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.AccountDetailDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.AccountDetailDomain;
 
 public record AccountDetailResponse(
         String ownerName, String bankName, String accountNumber, Boolean kakaoPayEnabled

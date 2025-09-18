@@ -1,7 +1,7 @@
 package com.lumiday.springboot.core.service;
 
 import com.lumiday.springboot.core.controller.dto.WeddingPlaceResponse;
-import com.lumiday.springboot.core.domain.WeddingPlaceDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.WeddingPlaceDomain;
 import com.lumiday.springboot.core.implement.persistence.WeddingPlacePersistence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@ package com.lumiday.springboot.core.implement.persistence;
 import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.UserEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
-import com.lumiday.springboot.core.domain.InvitationDomain;
+import com.lumiday.springboot.core.domain.invitation.aggregate.InvitationDomain;
 import com.lumiday.springboot.core.mapper.InvitationEntityMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

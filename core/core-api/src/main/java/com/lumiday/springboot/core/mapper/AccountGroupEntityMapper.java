@@ -1,15 +1,15 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.AccountGroupEntity;
-import com.lumiday.springboot.core.domain.AccountGroupDomain;
+import com.lumiday.jpa.vo.AccountGroup;
+import com.lumiday.springboot.core.domain.invitation.vo.AccountGroupDomain;
 
 public class AccountGroupEntityMapper {
 
     private AccountGroupEntityMapper() {
     }
-    
-    public static AccountGroupEntity toEntity(AccountGroupDomain accountGroupDomain) {
-        return AccountGroupEntity.of(
+
+    public static AccountGroup toEntity(AccountGroupDomain accountGroupDomain) {
+        return AccountGroup.of(
                 accountGroupDomain.getGroupName(),
                 accountGroupDomain.getAccountDetails().stream()
                         .map(AccountDetailEntityMapper::toEntity)
@@ -17,10 +17,10 @@ public class AccountGroupEntityMapper {
         );
     }
 
-    public static AccountGroupDomain toDomain(AccountGroupEntity accountGroupEntity) {
+    public static AccountGroupDomain toDomain(AccountGroup accountGroup) {
         return AccountGroupDomain.of(
-                accountGroupEntity.getGroupName(),
-                accountGroupEntity.getAccountDetails().stream()
+                accountGroup.getName(),
+                accountGroup.getAccountDetails().stream()
                         .map(AccountDetailEntityMapper::toDomain)
                         .toList()
         );

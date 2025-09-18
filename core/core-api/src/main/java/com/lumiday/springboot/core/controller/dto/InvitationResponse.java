@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.InvitationDomain;
+import com.lumiday.springboot.core.domain.invitation.aggregate.InvitationDomain;
 
 public record InvitationResponse(
         ThemeResponse theme,

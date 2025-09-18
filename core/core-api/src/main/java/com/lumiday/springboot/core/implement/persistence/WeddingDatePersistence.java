@@ -1,9 +1,9 @@
 package com.lumiday.springboot.core.implement.persistence;
 
 import com.lumiday.jpa.entity.InvitationEntity;
-import com.lumiday.jpa.entity.WeddingDateEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
-import com.lumiday.springboot.core.domain.WeddingDateDomain;
+import com.lumiday.jpa.vo.WeddingDate;
+import com.lumiday.springboot.core.domain.invitation.vo.WeddingDateDomain;
 import com.lumiday.springboot.core.mapper.WeddingDateEntityMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +21,12 @@ public class WeddingDatePersistence {
         InvitationEntity invitationEntity = invitationRepository.findById(invitationId)
                 .orElseThrow(() -> new EntityNotFoundException("청첩장을 찾을 수 없습니다."));
 
-        WeddingDateEntity weddingDateEntity = invitationEntity.getWeddingDate();
+        WeddingDate weddingDate = invitationEntity.getWeddingDate();
 
-        if (weddingDateEntity == null) {
+        if (weddingDate == null) {
             throw new EntityNotFoundException("청첩장에 대한 결혼 날짜를 찾을 수 없습니다.");
         }
 
-        return WeddingDateEntityMapper.toDomain(weddingDateEntity);
+        return WeddingDateEntityMapper.toDomain(weddingDate);
     }
 }

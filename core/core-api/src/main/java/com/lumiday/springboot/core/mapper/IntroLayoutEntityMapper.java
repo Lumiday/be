@@ -1,25 +1,25 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.IntroLayoutEntity;
-import com.lumiday.springboot.core.domain.IntroLayoutDomain;
+import com.lumiday.jpa.vo.IntroLayout;
+import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
 
 public class IntroLayoutEntityMapper {
     private IntroLayoutEntityMapper() {
     }
 
-    public static IntroLayoutEntity toEntity(IntroLayoutDomain introLayoutDomain) {
-        return IntroLayoutEntity.of(
+    public static IntroLayout toEntity(IntroLayoutDomain introLayoutDomain) {
+        return IntroLayout.of(
                 introLayoutDomain.getLayoutType(),
                 introLayoutDomain.getPhotoFrameStyle(),
                 introLayoutDomain.getImageName()
         );
     }
 
-    public static IntroLayoutDomain toDomain(IntroLayoutEntity introLayoutEntity) {
+    public static IntroLayoutDomain toDomain(IntroLayout introLayout) {
         return IntroLayoutDomain.of(
-                introLayoutEntity.getLayoutType(),
-                introLayoutEntity.getPhotoFrameStyle(),
-                introLayoutEntity.getImageName()
+                introLayout.getLayoutType(),
+                introLayout.getPhotoFrameStyle(),
+                introLayout.getImageName()
         );
     }
 }

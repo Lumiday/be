@@ -1,24 +1,24 @@
 package com.lumiday.springboot.core.mapper;
 
-import com.lumiday.jpa.entity.BackgroundMusicEntity;
-import com.lumiday.springboot.core.domain.BackgroundMusicDomain;
+import com.lumiday.jpa.vo.BackgroundMusic;
+import com.lumiday.springboot.core.domain.invitation.vo.BackgroundMusicDomain;
 
 public class BackgroundMusicEntityMapper {
 
     private BackgroundMusicEntityMapper() {
     }
 
-    public static BackgroundMusicEntity toEntity(BackgroundMusicDomain domain) {
-        return BackgroundMusicEntity.of(
+    public static BackgroundMusic toEntity(BackgroundMusicDomain domain) {
+        return BackgroundMusic.of(
                 domain.getMusicName(),
                 domain.getAutoPlay()
         );
     }
 
-    public static BackgroundMusicDomain toDomain(BackgroundMusicEntity entity) {
+    public static BackgroundMusicDomain toDomain(BackgroundMusic entity) {
         return BackgroundMusicDomain.of(
                 entity.getMusicName(),
-                entity.getAutoPlay()
+                entity.getAutoplay()
         );
     }
 }

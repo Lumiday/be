@@ -2,7 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.UserEntity;
-import com.lumiday.springboot.core.domain.InvitationDomain;
+import com.lumiday.springboot.core.domain.invitation.aggregate.InvitationDomain;
 
 public class InvitationEntityMapper {
     private InvitationEntityMapper() {

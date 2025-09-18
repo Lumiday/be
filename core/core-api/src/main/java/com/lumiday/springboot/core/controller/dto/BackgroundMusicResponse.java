@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.BackgroundMusicDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.BackgroundMusicDomain;
 
 public record BackgroundMusicResponse(String musicName, Boolean autoPlay) {
     public static BackgroundMusicResponse of(BackgroundMusicDomain backgroundMusic) {

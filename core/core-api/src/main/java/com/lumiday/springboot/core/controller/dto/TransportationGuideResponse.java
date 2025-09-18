@@ -1,6 +1,6 @@
 package com.lumiday.springboot.core.controller.dto;
 
-import com.lumiday.springboot.core.domain.TransportationGuideDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.TransportationGuideDomain;
 
 public record TransportationGuideResponse(
         String transportationName,
