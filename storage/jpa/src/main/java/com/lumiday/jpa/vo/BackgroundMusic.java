@@ -17,13 +17,11 @@ public class BackgroundMusic {
     @Column(name = "bgm_autoplay")
     private Boolean autoplay;
 
-    public static BackgroundMusic of(String musicName, Boolean autoplay) {
+    public BackgroundMusic(String musicName, Boolean autoplay) {
         if (musicName == null) {
             throw new IllegalArgumentException("musicName은 필수입니다.");
         }
-        BackgroundMusic bgm = new BackgroundMusic();
-        bgm.musicName = musicName;
-        bgm.autoplay = (autoplay != null) ? autoplay : Boolean.FALSE;
-        return bgm;
+        this.musicName = musicName;
+        this.autoplay = (autoplay != null) ? autoplay : Boolean.FALSE;
     }
 }

@@ -19,86 +19,86 @@ import org.junit.jupiter.api.Test;
 class InvitationVoTest {
     @Test
     void accountDetail_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> AccountDetail.of(null, "bank", "123", true))
+        assertThatThrownBy(() -> new AccountDetail(null, "bank", "123", true))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> AccountDetail.of("owner", null, "123", true))
+        assertThatThrownBy(() -> new AccountDetail("owner", null, "123", true))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> AccountDetail.of("owner", "bank", null, true))
+        assertThatThrownBy(() -> new AccountDetail("owner", "bank", null, true))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void accountDetail_shouldSetDefaults() {
-        AccountDetail ad = AccountDetail.of("owner", "bank", "123", null);
+        AccountDetail ad = new AccountDetail("owner", "bank", "123", null);
         assertThat(ad.getKakaoPayEnabled()).isNull();
     }
 
     @Test
     void accountGroup_shouldInitializeListAndFailWithoutName() {
-        assertThatThrownBy(() -> AccountGroup.of(null, null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new AccountGroup(null, null)).isInstanceOf(IllegalArgumentException.class);
 
-        AccountGroup group = AccountGroup.of("group1", null);
+        AccountGroup group = new AccountGroup("group1", null);
         assertThat(group.getAccountDetails()).isNotNull().isEmpty();
     }
 
     @Test
     void accountInfo_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> AccountInfo.of(null, "content", AccountDesignType.BASIC, null, null))
+        assertThatThrownBy(() -> new AccountInfo(null, "content", AccountDesignType.BASIC, null, null))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void attendanceCheck_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> AttendanceCheck.of(null, "content", "btn", AttendanceType.ETC))
+        assertThatThrownBy(() -> new AttendanceCheck(null, "content", "btn", AttendanceType.ETC))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void backgroundMusic_shouldSetDefaults() {
-        BackgroundMusic bgm = BackgroundMusic.of("song", null);
+        BackgroundMusic bgm = new BackgroundMusic("song", null);
         assertThat(bgm.getAutoplay()).isFalse();
     }
 
     @Test
     void ending_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> Ending.of(null, "content", "img"))
+        assertThatThrownBy(() -> new Ending(null, "content", "img"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void gallery_shouldSetDefaults() {
-        Gallery gallery = Gallery.of("name", GalleryType.CHECKERBOARD, null, null);
+        Gallery gallery = new Gallery("name", GalleryType.CHECKERBOARD, null, null);
         assertThat(gallery.getUsePopUpView()).isFalse();
         assertThat(gallery.getImages()).isNotNull().isEmpty();
     }
 
     @Test
     void introLayout_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> IntroLayout.of(null, PhotoFrameStyle.FRAME, "img"))
+        assertThatThrownBy(() -> new IntroLayout(null, PhotoFrameStyle.FRAME, "img"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void invitationMessage_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> InvitationMessage.of(null, "content"))
+        assertThatThrownBy(() -> new InvitationMessage(null, "content"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void personBaseInfo_shouldSetDefaults() {
-        PersonBaseInfo baseInfo = PersonBaseInfo.of(DeceasedDisplayType.CHRYSANTHEMUM, null);
+        PersonBaseInfo baseInfo = new PersonBaseInfo(DeceasedDisplayType.CHRYSANTHEMUM, null);
         assertThat(baseInfo.getPersonInfos()).isEmpty();
     }
 
     @Test
     void personInfo_shouldSetDefaults() {
-        PersonInfo info = PersonInfo.of(PersonRole.GROOM, "first", "last", "phone", null);
+        PersonInfo info = new PersonInfo(PersonRole.GROOM, "first", "last", "phone", null);
         assertThat(info.getIsDeceased()).isFalse();
     }
 
     @Test
     void themeStyle_shouldSetDefaults() {
-        ThemeStyle style = ThemeStyle.of(
+        ThemeStyle style = new ThemeStyle(
                 ThemeFontFamily.OWNGLYPH,
                 ThemeFontSize.LARGER,
                 ThemeColor.IVORY,
@@ -112,20 +112,20 @@ class InvitationVoTest {
 
     @Test
     void transportationGuide_shouldFailWithoutRequiredFields() {
-        assertThatThrownBy(() -> TransportationGuide.of(null, "desc"))
+        assertThatThrownBy(() -> new TransportationGuide(null, "desc"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void weddingDate_shouldSetDefaults() {
-        WeddingDate date = WeddingDate.of(LocalDateTime.now(), null, null);
+        WeddingDate date = new WeddingDate(LocalDateTime.now(), null, null);
         assertThat(date.getDisplayCalendar()).isTrue();
         assertThat(date.getDisplayDDay()).isTrue();
     }
 
     @Test
     void weddingPlace_shouldSetDefaults() {
-        WeddingPlace place = WeddingPlace.of("name", "desc", "addr", null, null);
+        WeddingPlace place = new WeddingPlace("name", "desc", "addr", null, null);
         assertThat(place.getShowMap()).isTrue();
         assertThat(place.getPlaceMapType()).isNull();
     }

@@ -24,14 +24,12 @@ public class IntroLayout {
     @Column(name = "intro_image_name")
     private String imageName;
 
-    public static IntroLayout of(String layoutType, PhotoFrameStyle photoFrameStyle, String imageName) {
+    public IntroLayout(String layoutType, PhotoFrameStyle photoFrameStyle, String imageName) {
         if (layoutType == null || photoFrameStyle == null) {
             throw new IllegalArgumentException("layoutType과 photoFrameStyle은 필수입니다.");
         }
-        IntroLayout layout = new IntroLayout();
-        layout.layoutType = layoutType;
-        layout.photoFrameStyle = photoFrameStyle;
-        layout.imageName = imageName;
-        return layout;
+        this.layoutType = layoutType;
+        this.photoFrameStyle = photoFrameStyle;
+        this.imageName = imageName;
     }
 }

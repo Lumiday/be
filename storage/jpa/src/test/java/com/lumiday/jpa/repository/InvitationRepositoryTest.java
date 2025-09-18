@@ -51,33 +51,33 @@ class InvitationRepositoryTest {
 
     @Test
     void saveAndFind() {
-        AccountGroup accountGroup1 = AccountGroup.of("groupName1",
-                List.of(AccountDetail.of("name", "bank", "123123", false)));
-        AccountGroup accountGroup2 = AccountGroup.of("groupName2",
-                List.of(AccountDetail.of("name2", "bank2", "234234", false)));
-        AccountInfo accountInfo = AccountInfo.of("title", "content", AccountDesignType.BASIC, accountGroup1,
+        AccountGroup accountGroup1 = new AccountGroup("groupName1",
+                List.of(new AccountDetail("name", "bank", "123123", false)));
+        AccountGroup accountGroup2 = new AccountGroup("groupName2",
+                List.of(new AccountDetail("name2", "bank2", "234234", false)));
+        AccountInfo accountInfo = new AccountInfo("title", "content", AccountDesignType.BASIC, accountGroup1,
                 accountGroup2);
 
-        PersonInfo personInfo1 = PersonInfo.of(PersonRole.GROOM, "test", "test2", "tsets", false);
-        PersonInfo personInfo2 = PersonInfo.of(PersonRole.BRIDE, "test", "test2", "tsets", false);
-        PersonBaseInfo personBaseInfo = PersonBaseInfo.of(DeceasedDisplayType.CHRYSANTHEMUM,
+        PersonInfo personInfo1 = new PersonInfo(PersonRole.GROOM, "test", "test2", "tsets", false);
+        PersonInfo personInfo2 = new PersonInfo(PersonRole.BRIDE, "test", "test2", "tsets", false);
+        PersonBaseInfo personBaseInfo = new PersonBaseInfo(DeceasedDisplayType.CHRYSANTHEMUM,
                 List.of(personInfo1, personInfo2));
 
         InvitationEntity invitationEntity = InvitationEntity.builder()
                 .accountInfo(accountInfo)
-                .attendanceCheck(AttendanceCheck.of("title", "content", "button", AttendanceType.ETC))
-                .backgroundMusic(BackgroundMusic.of("music", false))
-                .ending(Ending.of("title", "content", "image"))
-                .invitationMessage(InvitationMessage.of("title", "content"))
-                .gallery(Gallery.of("name", GalleryType.CHECKERBOARD, false, List.of("image1", "image2", "image3")))
-                .introLayout(IntroLayout.of("type", PhotoFrameStyle.FRAME, "qweqw"))
+                .attendanceCheck(new AttendanceCheck("title", "content", "button", AttendanceType.ETC))
+                .backgroundMusic(new BackgroundMusic("music", false))
+                .ending(new Ending("title", "content", "image"))
+                .invitationMessage(new InvitationMessage("title", "content"))
+                .gallery(new Gallery("name", GalleryType.CHECKERBOARD, false, List.of("image1", "image2", "image3")))
+                .introLayout(new IntroLayout("type", PhotoFrameStyle.FRAME, "qweqw"))
                 .personBaseInfo(personBaseInfo)
-                .theme(ThemeStyle.of(ThemeFontFamily.OWNGLYPH, ThemeFontSize.LARGER, ThemeColor.IVORY,
+                .theme(new ThemeStyle(ThemeFontFamily.OWNGLYPH, ThemeFontSize.LARGER, ThemeColor.IVORY,
                         ThemePattern.CHECK, false, false))
-                .transportationGuide(TransportationGuide.of("test", "test"))
-                .weddingDate(WeddingDate.of(LocalDateTime.now(), false, false))
-                .weddingPlace(WeddingPlace.of("name", "asdas", "asd", false, PlaceMapType.GOOGLE))
-                .user(UserEntity.of("email", "passowod"))
+                .transportationGuide(new TransportationGuide("test", "test"))
+                .weddingDate(new WeddingDate(LocalDateTime.now(), false, false))
+                .weddingPlace(new WeddingPlace("name", "asdas", "asd", false, PlaceMapType.GOOGLE))
+                .user(new UserEntity("email", "passowod"))
                 .build();
 
         invitationRepository.save(invitationEntity);

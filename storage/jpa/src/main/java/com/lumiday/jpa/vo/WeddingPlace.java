@@ -30,17 +30,15 @@ public class WeddingPlace {
     @Enumerated(EnumType.STRING)
     private PlaceMapType placeMapType;
 
-    public static WeddingPlace of(String name, String description, String address, Boolean showMap,
-                                  PlaceMapType placeMapType) {
+    public WeddingPlace(String name, String description, String address, Boolean showMap,
+                        PlaceMapType placeMapType) {
         if (name == null || address == null) {
             throw new IllegalArgumentException("name과 address는 필수입니다.");
         }
-        WeddingPlace place = new WeddingPlace();
-        place.name = name;
-        place.description = description;
-        place.address = address;
-        place.showMap = (showMap != null) ? showMap : Boolean.TRUE;
-        place.placeMapType = placeMapType; // null 허용
-        return place;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.showMap = (showMap != null) ? showMap : Boolean.TRUE;
+        this.placeMapType = placeMapType; // null 허용
     }
 }

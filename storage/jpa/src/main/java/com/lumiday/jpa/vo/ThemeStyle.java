@@ -39,7 +39,7 @@ public class ThemeStyle {
     @Column(name = "theme_enable_scroll_effect")
     private Boolean enableScrollEffect;
 
-    public static ThemeStyle of(
+    public ThemeStyle(
             ThemeFontFamily fontFamily,
             ThemeFontSize fontSize,
             ThemeColor backgroundColor,
@@ -51,13 +51,11 @@ public class ThemeStyle {
             throw new IllegalArgumentException("fontFamily, fontSize, backgroundColor, backgroundPattern은 필수입니다.");
         }
 
-        ThemeStyle style = new ThemeStyle();
-        style.fontFamily = fontFamily;
-        style.fontSize = fontSize;
-        style.backgroundColor = backgroundColor;
-        style.backgroundPattern = backgroundPattern;
-        style.disableZoom = disableZoom == null ? Boolean.FALSE : disableZoom;
-        style.enableScrollEffect = enableScrollEffect == null ? Boolean.FALSE : enableScrollEffect;
-        return style;
+        this.fontFamily = fontFamily;
+        this.fontSize = fontSize;
+        this.backgroundColor = backgroundColor;
+        this.backgroundPattern = backgroundPattern;
+        this.disableZoom = disableZoom == null ? Boolean.FALSE : disableZoom;
+        this.enableScrollEffect = enableScrollEffect == null ? Boolean.FALSE : enableScrollEffect;
     }
 }

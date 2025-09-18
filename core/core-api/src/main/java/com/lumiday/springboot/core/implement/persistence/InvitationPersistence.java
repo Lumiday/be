@@ -4,7 +4,7 @@ import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.entity.UserEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.springboot.core.domain.invitation.aggregate.InvitationDomain;
-import com.lumiday.springboot.core.mapper.InvitationEntityMapper;
+import com.lumiday.springboot.core.mapper.InvitationMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class InvitationPersistence {
     @Transactional
     public String saveInvitation(InvitationDomain invitationDomain) {
         UserEntity userEntity = userPersistence.mapToEntity(invitationDomain.getUser());
-        InvitationEntity invitationEntity = InvitationEntityMapper.toEntity(userEntity, invitationDomain);
+        InvitationEntity invitationEntity = InvitationMapper.INSTANCE.toEntity(userEntity, invitationDomain);
 
         invitationRepository.save(invitationEntity);
         return invitationEntity.getId();
@@ -31,6 +31,6 @@ public class InvitationPersistence {
         InvitationEntity invitationEntity = invitationRepository.findById(invitationId)
                 .orElseThrow(() -> new EntityNotFoundException("청첩장을 찾을 수 없습니다."));
 
-        return InvitationEntityMapper.toDomain(invitationEntity);
+        return InvitationMapper.INSTANCE.toDomain(invitationEntity);
     }
 }

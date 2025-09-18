@@ -37,15 +37,13 @@ public class Gallery {
     @Column(name = "gallery_image")
     private List<String> images;
 
-    public static Gallery of(String name, GalleryType type, Boolean usePopUpView, List<String> images) {
+    public Gallery(String name, GalleryType type, Boolean usePopUpView, List<String> images) {
         if (name == null || type == null) {
             throw new IllegalArgumentException("name과 type은 필수입니다.");
         }
-        Gallery gallery = new Gallery();
-        gallery.name = name;
-        gallery.type = type;
-        gallery.usePopUpView = usePopUpView != null ? usePopUpView : Boolean.FALSE;
-        gallery.images = images != null ? new ArrayList<>(images) : new ArrayList<>();
-        return gallery;
+        this.name = name;
+        this.type = type;
+        this.usePopUpView = usePopUpView != null ? usePopUpView : Boolean.FALSE;
+        this.images = images != null ? new ArrayList<>(images) : new ArrayList<>();
     }
 }

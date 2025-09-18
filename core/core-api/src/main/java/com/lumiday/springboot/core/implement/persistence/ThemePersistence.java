@@ -4,7 +4,7 @@ import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
-import com.lumiday.springboot.core.mapper.ThemeEntityMapper;
+import com.lumiday.springboot.core.mapper.ThemeMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,6 +27,6 @@ public class ThemePersistence {
             throw new EntityNotFoundException("청첩장에 대한 테마를 찾을 수 없습니다.");
         }
 
-        return ThemeEntityMapper.toDomain(themeEntity);
+        return ThemeMapper.INSTANCE.toDomain(themeEntity);
     }
 }

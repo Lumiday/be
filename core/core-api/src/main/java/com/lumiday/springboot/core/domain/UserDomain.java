@@ -1,11 +1,10 @@
 package com.lumiday.springboot.core.domain;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class UserDomain {
     private String email;
     private String username;

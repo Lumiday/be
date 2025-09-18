@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 public record CreateInvitationRequest(
         @NotNull ThemeRequest theme,
         @NotNull IntroLayoutRequest introLayout,
-        @NotNull PersonBasicInfoRequest personBasicInfo,
+        @NotNull PersonBaseInfoRequest personBaseInfo,
         @NotNull WeddingDateRequest weddingDate,
         @NotNull WeddingPlaceRequest weddingPlace,
         @NotNull InvitationMessageRequest invitationMessage,

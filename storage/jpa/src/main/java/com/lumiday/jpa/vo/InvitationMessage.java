@@ -17,13 +17,11 @@ public class InvitationMessage {
     @Column(name = "invitation_content")
     private String content;
 
-    public static InvitationMessage of(String title, String content) {
+    public InvitationMessage(String title, String content) {
         if (title == null || content == null) {
             throw new IllegalArgumentException("title과 content는 필수입니다.");
         }
-        InvitationMessage message = new InvitationMessage();
-        message.title = title;
-        message.content = content;
-        return message;
+        this.title = title;
+        this.content = content;
     }
 }

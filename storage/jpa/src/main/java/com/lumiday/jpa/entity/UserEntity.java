@@ -15,12 +15,8 @@ public class UserEntity extends BaseEntity {
     private String email;
     private String username;
 
-    private UserEntity(String email, String username) {
+    public UserEntity(String email, String username) {
         this.email = email;
         this.username = username;
-    }
-
-    public static UserEntity of(String email, String username) {
-        return new UserEntity(email, username);
     }
 }

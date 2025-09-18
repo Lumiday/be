@@ -26,13 +26,11 @@ public class AccountGroup {
     )
     private List<AccountDetail> accountDetails = new ArrayList<>();
 
-    public static AccountGroup of(String name, List<AccountDetail> accountDetails) {
+    public AccountGroup(String name, List<AccountDetail> accountDetails) {
         if (name == null) {
             throw new IllegalArgumentException("그룹 이름은 필수입니다.");
         }
-        AccountGroup group = new AccountGroup();
-        group.name = name;
-        group.accountDetails = (accountDetails != null) ? accountDetails : new ArrayList<>();
-        return group;
+        this.name = name;
+        this.accountDetails = (accountDetails != null) ? accountDetails : new ArrayList<>();
     }
 }

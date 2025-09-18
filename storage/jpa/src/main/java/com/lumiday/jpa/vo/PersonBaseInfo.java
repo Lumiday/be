@@ -26,13 +26,11 @@ public class PersonBaseInfo {
     )
     private List<PersonInfo> personInfos;
 
-    public static PersonBaseInfo of(DeceasedDisplayType deceasedDisplayType, List<PersonInfo> personInfos) {
+    public PersonBaseInfo(DeceasedDisplayType deceasedDisplayType, List<PersonInfo> personInfos) {
         if (deceasedDisplayType == null) {
             throw new IllegalArgumentException("deceasedDisplayType은 필수입니다.");
         }
-        PersonBaseInfo info = new PersonBaseInfo();
-        info.deceasedDisplayType = deceasedDisplayType;
-        info.personInfos = personInfos == null ? List.of() : List.copyOf(personInfos);
-        return info;
+        this.deceasedDisplayType = deceasedDisplayType;
+        this.personInfos = personInfos == null ? List.of() : List.copyOf(personInfos);
     }
 }

@@ -4,7 +4,7 @@ import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.jpa.vo.IntroLayout;
 import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
-import com.lumiday.springboot.core.mapper.IntroLayoutEntityMapper;
+import com.lumiday.springboot.core.mapper.IntroLayoutMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -37,6 +37,6 @@ public class IntroLayoutPersistence {
             throw new EntityNotFoundException("청첩장에 대한 인트로 레이아웃을 찾을 수 없습니다.");
         }
 
-        return IntroLayoutEntityMapper.toDomain(introLayout);
+        return IntroLayoutMapper.INSTANCE.toDomain(introLayout);
     }
 }

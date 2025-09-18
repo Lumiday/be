@@ -21,14 +21,12 @@ public class WeddingDate {
     @Column(name = "wedding_display_dday")
     private Boolean displayDDay;
 
-    public static WeddingDate of(LocalDateTime weddingDateTime, Boolean displayCalendar, Boolean displayDDay) {
+    public WeddingDate(LocalDateTime weddingDateTime, Boolean displayCalendar, Boolean displayDDay) {
         if (weddingDateTime == null) {
             throw new IllegalArgumentException("weddingDateTime은 필수입니다.");
         }
-        WeddingDate date = new WeddingDate();
-        date.weddingDateTime = weddingDateTime;
-        date.displayCalendar = (displayCalendar != null) ? displayCalendar : Boolean.TRUE;
-        date.displayDDay = (displayDDay != null) ? displayDDay : Boolean.TRUE;
-        return date;
+        this.weddingDateTime = weddingDateTime;
+        this.displayCalendar = (displayCalendar != null) ? displayCalendar : Boolean.TRUE;
+        this.displayDDay = (displayDDay != null) ? displayDDay : Boolean.TRUE;
     }
 }

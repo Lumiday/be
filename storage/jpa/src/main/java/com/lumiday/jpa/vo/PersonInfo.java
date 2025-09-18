@@ -30,7 +30,7 @@ public class PersonInfo {
     @Column(name = "person_is_deceased")
     private Boolean isDeceased;
 
-    public static PersonInfo of(PersonRole role, String firstName, String lastName, String phone, Boolean isDeceased) {
+    public PersonInfo(PersonRole role, String firstName, String lastName, String phone, Boolean isDeceased) {
         if (role == null) {
             throw new IllegalArgumentException("role은 필수입니다.");
         }
@@ -38,12 +38,10 @@ public class PersonInfo {
             throw new IllegalArgumentException("firstName과 lastName은 필수입니다.");
         }
 
-        PersonInfo info = new PersonInfo();
-        info.role = role;
-        info.firstName = firstName;
-        info.lastName = lastName;
-        info.phone = phone;
-        info.isDeceased = isDeceased == null ? Boolean.FALSE : isDeceased;
-        return info;
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.isDeceased = isDeceased == null ? Boolean.FALSE : isDeceased;
     }
 }

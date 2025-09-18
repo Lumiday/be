@@ -4,7 +4,7 @@ import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.jpa.vo.WeddingPlace;
 import com.lumiday.springboot.core.domain.invitation.vo.WeddingPlaceDomain;
-import com.lumiday.springboot.core.mapper.WeddingPlaceEntityMapper;
+import com.lumiday.springboot.core.mapper.WeddingPlaceMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,6 +27,6 @@ public class WeddingPlacePersistence {
             throw new EntityNotFoundException("청첩장에 대한 결혼 장소를 찾을 수 없습니다.");
         }
 
-        return WeddingPlaceEntityMapper.toDomain(weddingPlace);
+        return WeddingPlaceMapper.INSTANCE.toDomain(weddingPlace);
     }
 }

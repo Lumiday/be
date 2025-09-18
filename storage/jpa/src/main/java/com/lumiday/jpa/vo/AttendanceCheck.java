@@ -28,15 +28,13 @@ public class AttendanceCheck {
     @Enumerated(EnumType.STRING)
     private AttendanceType type;
 
-    public static AttendanceCheck of(String title, String content, String buttonText, AttendanceType type) {
+    public AttendanceCheck(String title, String content, String buttonText, AttendanceType type) {
         if (title == null || content == null || buttonText == null || type == null) {
             throw new IllegalArgumentException("title, content, buttonText, type는 필수입니다.");
         }
-        AttendanceCheck check = new AttendanceCheck();
-        check.title = title;
-        check.content = content;
-        check.buttonText = buttonText;
-        check.type = type;
-        return check;
+        this.title = title;
+        this.content = content;
+        this.buttonText = buttonText;
+        this.type = type;
     }
 }

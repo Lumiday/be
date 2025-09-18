@@ -4,7 +4,7 @@ import com.lumiday.jpa.entity.InvitationEntity;
 import com.lumiday.jpa.repository.InvitationRepository;
 import com.lumiday.jpa.vo.InvitationMessage;
 import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
-import com.lumiday.springboot.core.mapper.InvitationMessageEntityMapper;
+import com.lumiday.springboot.core.mapper.InvitationMessageMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,6 +27,6 @@ public class InvitationMessagePersistence {
             throw new EntityNotFoundException("청첩장에 대한 초대 문구를 찾을 수 없습니다.");
         }
 
-        return InvitationMessageEntityMapper.toDomain(invitationMessage);
+        return InvitationMessageMapper.INSTANCE.toDomain(invitationMessage);
     }
 }

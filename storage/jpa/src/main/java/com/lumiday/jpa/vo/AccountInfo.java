@@ -35,18 +35,16 @@ public class AccountInfo {
     @AttributeOverride(name = "name", column = @Column(name = "bride_group_name"))
     private AccountGroup brideAccountGroup;
 
-    public static AccountInfo of(String title, String content, AccountDesignType designType,
-                                 AccountGroup groomAccountGroup, AccountGroup brideAccountGroup) {
+    public AccountInfo(String title, String content, AccountDesignType designType,
+                       AccountGroup groomAccountGroup, AccountGroup brideAccountGroup) {
         if (title == null || content == null || designType == null) {
             throw new IllegalArgumentException("title, content, designType는 필수입니다.");
         }
 
-        AccountInfo info = new AccountInfo();
-        info.title = title;
-        info.content = content;
-        info.designType = designType;
-        info.groomAccountGroup = (groomAccountGroup != null) ? groomAccountGroup : AccountGroup.of("", List.of());
-        info.brideAccountGroup = (brideAccountGroup != null) ? brideAccountGroup : AccountGroup.of("", List.of());
-        return info;
+        this.title = title;
+        this.content = content;
+        this.designType = designType;
+        this.groomAccountGroup = (groomAccountGroup != null) ? groomAccountGroup : new AccountGroup("", List.of());
+        this.brideAccountGroup = (brideAccountGroup != null) ? brideAccountGroup : new AccountGroup("", List.of());
     }
 }

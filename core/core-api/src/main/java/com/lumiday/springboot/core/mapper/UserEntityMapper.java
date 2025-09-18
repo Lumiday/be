@@ -2,22 +2,15 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.entity.UserEntity;
 import com.lumiday.springboot.core.domain.UserDomain;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-public class UserEntityMapper {
-    private UserEntityMapper() {
-    }
+@Mapper
+public interface UserEntityMapper {
 
-    public static UserEntity toEntity(UserDomain domain) {
-        return UserEntity.of(
-                domain.getEmail(),
-                domain.getUsername()
-        );
-    }
+    UserEntityMapper INSTANCE = Mappers.getMapper(UserEntityMapper.class);
 
-    public static UserDomain toDomain(UserEntity entity) {
-        return UserDomain.of(
-                entity.getEmail(),
-                entity.getUsername()
-        );
-    }
+    UserEntity toEntity(UserDomain domain);
+
+    UserDomain toDomain(UserEntity entity);
 }
