@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.InvitationMessage;
 import com.lumiday.springboot.core.controller.dto.InvitationMessageRequest;
+import com.lumiday.springboot.core.controller.dto.InvitationMessageResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -14,5 +15,7 @@ public interface InvitationMessageMapper {
 
     InvitationMessageDomain toDomain(InvitationMessage entity);
 
-    InvitationMessageDomain toDomain(InvitationMessageRequest entity);
+    InvitationMessageDomain toDomain(InvitationMessageRequest request);
+
+    InvitationMessageResponse toResponse(InvitationMessageDomain invitationMessageDomain);
 }

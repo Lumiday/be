@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.BackgroundMusic;
 import com.lumiday.springboot.core.controller.dto.BackgroundMusicRequest;
+import com.lumiday.springboot.core.controller.dto.BackgroundMusicResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.BackgroundMusicDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -16,4 +17,6 @@ public interface BackgroundMusicMapper {
     BackgroundMusicDomain toDomain(BackgroundMusic entity);
 
     BackgroundMusicDomain toDomain(BackgroundMusicRequest entity);
+
+    BackgroundMusicResponse toResponse(BackgroundMusicDomain domain);
 }

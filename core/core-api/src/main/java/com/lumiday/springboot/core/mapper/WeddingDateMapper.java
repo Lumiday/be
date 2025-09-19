@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.WeddingDate;
 import com.lumiday.springboot.core.controller.dto.WeddingDateRequest;
+import com.lumiday.springboot.core.controller.dto.WeddingDateResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.WeddingDateDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,4 +16,6 @@ public interface WeddingDateMapper {
     WeddingDateDomain toDomain(WeddingDate weddingDate);
 
     WeddingDateDomain toDomain(WeddingDateRequest weddingDate);
+
+    WeddingDateResponse toResponse(WeddingDateDomain weddingDateDomain);
 }

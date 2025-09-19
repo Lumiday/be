@@ -1,6 +1,7 @@
 package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.IntroLayout;
+import com.lumiday.springboot.core.controller.dto.IntroLayOutResponse;
 import com.lumiday.springboot.core.controller.dto.IntroLayoutRequest;
 import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
 import org.mapstruct.Mapper;
@@ -15,4 +16,6 @@ public interface IntroLayoutMapper {
     IntroLayoutDomain toDomain(IntroLayout introLayout);
 
     IntroLayoutDomain toDomain(IntroLayoutRequest introLayout);
+
+    IntroLayOutResponse toResponse(IntroLayoutDomain introLayoutDomain);
 }

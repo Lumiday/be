@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.Gallery;
 import com.lumiday.springboot.core.controller.dto.GalleryRequest;
+import com.lumiday.springboot.core.controller.dto.GalleryResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.GalleryDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -16,4 +17,6 @@ public interface GalleryMapper {
     GalleryDomain toDomain(Gallery entity);
 
     GalleryDomain toDomain(GalleryRequest entity);
+
+    GalleryResponse toResponse(GalleryDomain domain);
 }

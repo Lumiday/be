@@ -102,4 +102,87 @@ public class InvitationEntity extends BaseEntity {
     public static InvitationEntity of(UserEntity user) {
         return new InvitationEntity(user);
     }
+
+    public void changeIntroLayout(IntroLayout introLayout) {
+        if (introLayout == null) {
+            throw new IllegalArgumentException("introLayout은 null이 될 수 없습니다.");
+        }
+        this.introLayout = introLayout;
+    }
+
+    public void changeInvitationMessage(InvitationMessage invitationMessage) {
+        if (invitationMessage == null) {
+            throw new IllegalArgumentException("invitationMessage는 null이 될 수 없습니다.");
+        }
+        this.invitationMessage = invitationMessage;
+    }
+
+    public void changePersonBaseInfo(PersonBaseInfo personBaseInfo) {
+        if (personBaseInfo == null) {
+            throw new IllegalArgumentException("personBaseInfo는 null이 될 수 없습니다.");
+        }
+        this.personBaseInfo = personBaseInfo;
+    }
+
+    public void changeTheme(ThemeStyle themeStyle) {
+        if (themeStyle == null) {
+            throw new IllegalArgumentException("theme는 null이 될 수 없습니다.");
+        }
+        this.theme = themeStyle;
+    }
+
+    public void changeWeddingDate(WeddingDate weddingDate) {
+        if (weddingDate == null) {
+            throw new IllegalArgumentException("weddingDate는 null이 될 수 없습니다.");
+        }
+        this.weddingDate = weddingDate;
+    }
+
+    public void changeWeddingPlace(WeddingPlace weddingPlace) {
+        if (weddingPlace == null) {
+            throw new IllegalArgumentException("weddingPlace는 null이 될 수 없습니다.");
+        }
+        this.weddingPlace = weddingPlace;
+    }
+
+    public void changeAccountInfo(AccountInfo accountInfo) {
+        if (accountInfo == null) {
+            throw new IllegalArgumentException("accountInfo는 null이 될 수 없습니다.");
+        }
+    }
+
+    public void changeAttendanceCheck(AttendanceCheck attendanceCheck) {
+        if (attendanceCheck == null) {
+            throw new IllegalArgumentException("attendanceCheck는 null이 될 수 없습니다.");
+        }
+        this.attendanceCheck = attendanceCheck;
+    }
+
+    public void changeBackgroundMusic(BackgroundMusic backgroundMusic) {
+        if (backgroundMusic == null) {
+            throw new IllegalArgumentException("backgroundMusic는 null이 될 수 없습니다.");
+        }
+        this.backgroundMusic = backgroundMusic;
+    }
+
+    public void changeEnding(Ending ending) {
+        if (ending == null) {
+            throw new IllegalArgumentException("ending는 null이 될 수 없습니다.");
+        }
+        this.ending = ending;
+    }
+
+    public void changeGallery(Gallery gallery) {
+        if (gallery == null) {
+            throw new IllegalArgumentException("gallery는 null이 될 수 없습니다.");
+        }
+        this.gallery = gallery;
+    }
+
+    public void changeTransportationGuide(TransportationGuide transportationGuide) {
+        if (transportationGuide == null) {
+            throw new IllegalArgumentException("transportationGuide는 null이 될 수 없습니다.");
+        }
+        this.transportationGuide = transportationGuide;
+    }
 }

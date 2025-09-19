@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.springboot.core.controller.dto.ThemeRequest;
+import com.lumiday.springboot.core.controller.dto.ThemeResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,4 +16,6 @@ public interface ThemeMapper {
     ThemeDomain toDomain(ThemeStyle themeEntity);
 
     ThemeDomain toDomain(ThemeRequest themeEntity);
+
+    ThemeResponse toResponse(ThemeDomain themeDomain);
 }

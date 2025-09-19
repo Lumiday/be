@@ -2,6 +2,7 @@ package com.lumiday.springboot.core.mapper;
 
 import com.lumiday.jpa.vo.Ending;
 import com.lumiday.springboot.core.controller.dto.EndingRequest;
+import com.lumiday.springboot.core.controller.dto.EndingResponse;
 import com.lumiday.springboot.core.domain.invitation.vo.EndingDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -16,4 +17,6 @@ public interface EndingMapper {
     EndingDomain toDomain(Ending entity);
 
     EndingDomain toDomain(EndingRequest entity);
+
+    EndingResponse toResponse(EndingDomain domain);
 }
