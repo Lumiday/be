@@ -7,7 +7,7 @@ import com.lumiday.jpa.vo.Ending;
 import com.lumiday.jpa.vo.Gallery;
 import com.lumiday.jpa.vo.IntroLayout;
 import com.lumiday.jpa.vo.InvitationMessage;
-import com.lumiday.jpa.vo.PersonBaseInfo;
+import com.lumiday.jpa.vo.PersonBasicInfo;
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.jpa.vo.TransportationGuide;
 import com.lumiday.jpa.vo.WeddingDate;
@@ -39,7 +39,7 @@ public class InvitationEntity extends BaseEntity {
     private ThemeStyle theme;
 
     @Embedded
-    private PersonBaseInfo personBaseInfo;
+    private PersonBasicInfo personBasicInfo;
 
     @Embedded
     private WeddingDate weddingDate;
@@ -73,12 +73,12 @@ public class InvitationEntity extends BaseEntity {
     }
 
     @Builder
-    public InvitationEntity(UserEntity user, IntroLayout introLayout, ThemeStyle theme, PersonBaseInfo personBaseInfo,
+    public InvitationEntity(UserEntity user, IntroLayout introLayout, ThemeStyle theme, PersonBasicInfo personBasicInfo,
                             WeddingDate weddingDate, WeddingPlace weddingPlace, InvitationMessage invitationMessage,
                             BackgroundMusic backgroundMusic, TransportationGuide transportationGuide,
                             AccountInfo accountInfo, Gallery gallery, AttendanceCheck attendanceCheck, Ending ending) {
 
-        if (user == null || introLayout == null || theme == null || personBaseInfo == null || weddingDate == null
+        if (user == null || introLayout == null || theme == null || personBasicInfo == null || weddingDate == null
                 || weddingPlace == null || invitationMessage == null) {
             throw new IllegalArgumentException(
                     "모든 필수 필드는 null이 될 수 없습니다. user, introLayout, theme, personBaseInfo, weddingDate, weddingPlace, invitationMessage는 필수입니다.");
@@ -87,7 +87,7 @@ public class InvitationEntity extends BaseEntity {
         this.user = user;
         this.introLayout = introLayout;
         this.theme = theme;
-        this.personBaseInfo = personBaseInfo;
+        this.personBasicInfo = personBasicInfo;
         this.weddingDate = weddingDate;
         this.weddingPlace = weddingPlace;
         this.invitationMessage = invitationMessage;
@@ -117,11 +117,11 @@ public class InvitationEntity extends BaseEntity {
         this.invitationMessage = invitationMessage;
     }
 
-    public void changePersonBaseInfo(PersonBaseInfo personBaseInfo) {
-        if (personBaseInfo == null) {
+    public void changePersonBaseInfo(PersonBasicInfo personBasicInfo) {
+        if (personBasicInfo == null) {
             throw new IllegalArgumentException("personBaseInfo는 null이 될 수 없습니다.");
         }
-        this.personBaseInfo = personBaseInfo;
+        this.personBasicInfo = personBasicInfo;
     }
 
     public void changeTheme(ThemeStyle themeStyle) {

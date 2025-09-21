@@ -6,10 +6,10 @@ import lombok.Getter;
 public class BackgroundMusicDomain {
 
     private String musicName;
-    private Boolean autoPlay;
+    private Boolean autoplay;
 
-    public BackgroundMusicDomain(String musicName, Boolean autoPlay) {
+    public BackgroundMusicDomain(String musicName, Boolean autoplay) {
         this.musicName = musicName;
-        this.autoPlay = autoPlay;
+        this.autoplay = autoplay;
     }
 }

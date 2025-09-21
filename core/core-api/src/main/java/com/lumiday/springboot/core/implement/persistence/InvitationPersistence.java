@@ -10,7 +10,7 @@ import com.lumiday.jpa.vo.Ending;
 import com.lumiday.jpa.vo.Gallery;
 import com.lumiday.jpa.vo.IntroLayout;
 import com.lumiday.jpa.vo.InvitationMessage;
-import com.lumiday.jpa.vo.PersonBaseInfo;
+import com.lumiday.jpa.vo.PersonBasicInfo;
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.jpa.vo.TransportationGuide;
 import com.lumiday.jpa.vo.WeddingDate;
@@ -23,7 +23,7 @@ import com.lumiday.springboot.core.domain.invitation.vo.EndingDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.GalleryDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
-import com.lumiday.springboot.core.domain.invitation.vo.PersonBaseInfoDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.PersonBasicInfoDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.TransportationGuideDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.WeddingDateDomain;
@@ -37,7 +37,7 @@ import com.lumiday.springboot.core.mapper.GalleryMapper;
 import com.lumiday.springboot.core.mapper.IntroLayoutMapper;
 import com.lumiday.springboot.core.mapper.InvitationMapper;
 import com.lumiday.springboot.core.mapper.InvitationMessageMapper;
-import com.lumiday.springboot.core.mapper.PersonBaseInfoMapper;
+import com.lumiday.springboot.core.mapper.PersonBasicInfoMapper;
 import com.lumiday.springboot.core.mapper.ThemeMapper;
 import com.lumiday.springboot.core.mapper.TransportationGuideMapper;
 import com.lumiday.springboot.core.mapper.WeddingDateMapper;
@@ -99,17 +99,17 @@ public class InvitationPersistence {
 
     // --- PersonBaseInfo ---
     @Transactional
-    public PersonBaseInfo updatePersonInfo(String invitationId, PersonBaseInfoDomain domain) {
+    public PersonBasicInfo updatePersonInfo(String invitationId, PersonBasicInfoDomain domain) {
         InvitationEntity invitation = getInvitationEntityOrThrow(invitationId);
-        PersonBaseInfo personBaseInfo = PersonBaseInfoMapper.INSTANCE.toEntity(domain);
-        invitation.changePersonBaseInfo(personBaseInfo);
-        return requireNonNullOrThrow(invitation.getPersonBaseInfo(), "청첩장에 대한 인물 정보를 찾을 수 없습니다.");
+        PersonBasicInfo personBasicInfo = PersonBasicInfoMapper.INSTANCE.toEntity(domain);
+        invitation.changePersonBaseInfo(personBasicInfo);
+        return requireNonNullOrThrow(invitation.getPersonBasicInfo(), "청첩장에 대한 인물 정보를 찾을 수 없습니다.");
     }
 
     @Transactional(readOnly = true)
-    public PersonBaseInfo getPersonInfoByInvitationId(String invitationId) {
+    public PersonBasicInfo getPersonInfoByInvitationId(String invitationId) {
         InvitationEntity invitation = getInvitationEntityOrThrow(invitationId);
-        return requireNonNullOrThrow(invitation.getPersonBaseInfo(), "청첩장에 대한 인물 정보를 찾을 수 없습니다.");
+        return requireNonNullOrThrow(invitation.getPersonBasicInfo(), "청첩장에 대한 인물 정보를 찾을 수 없습니다.");
     }
 
     // --- Theme ---

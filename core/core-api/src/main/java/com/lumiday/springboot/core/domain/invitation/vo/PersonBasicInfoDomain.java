@@ -5,12 +5,12 @@ import java.util.List;
 import lombok.Getter;
 
 @Getter
-public class PersonBaseInfoDomain {
+public class PersonBasicInfoDomain {
     private DeceasedDisplayType deceasedDisplayType;
-    private List<PersonInfoDomain> personInfoList;
+    private List<PersonInfoDomain> personInfos;
 
-    public PersonBaseInfoDomain(DeceasedDisplayType deceasedDisplayType, List<PersonInfoDomain> personInfoList) {
+    public PersonBasicInfoDomain(DeceasedDisplayType deceasedDisplayType, List<PersonInfoDomain> personInfos) {
         this.deceasedDisplayType = deceasedDisplayType;
-        this.personInfoList = personInfoList;
+        this.personInfos = personInfos;
     }
 }

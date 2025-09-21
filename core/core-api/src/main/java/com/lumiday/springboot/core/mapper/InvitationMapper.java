@@ -14,8 +14,6 @@ import org.mapstruct.factory.Mappers;
 public interface InvitationMapper {
     InvitationMapper INSTANCE = Mappers.getMapper(InvitationMapper.class);
 
-    InvitationEntity toEntity(UserEntity user);
-
     @Mapping(target = "user", source = "user")
     InvitationEntity toEntity(UserEntity user, InvitationDomain invitationDomain);
 

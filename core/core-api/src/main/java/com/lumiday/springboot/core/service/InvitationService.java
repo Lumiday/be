@@ -8,7 +8,7 @@ import com.lumiday.jpa.vo.Ending;
 import com.lumiday.jpa.vo.Gallery;
 import com.lumiday.jpa.vo.IntroLayout;
 import com.lumiday.jpa.vo.InvitationMessage;
-import com.lumiday.jpa.vo.PersonBaseInfo;
+import com.lumiday.jpa.vo.PersonBasicInfo;
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.jpa.vo.TransportationGuide;
 import com.lumiday.jpa.vo.WeddingDate;
@@ -29,7 +29,7 @@ import com.lumiday.springboot.core.controller.dto.IntroLayoutRequest;
 import com.lumiday.springboot.core.controller.dto.InvitationMessageRequest;
 import com.lumiday.springboot.core.controller.dto.InvitationMessageResponse;
 import com.lumiday.springboot.core.controller.dto.InvitationResponse;
-import com.lumiday.springboot.core.controller.dto.PersonBaseInfoRequest;
+import com.lumiday.springboot.core.controller.dto.PersonBasicInfoRequest;
 import com.lumiday.springboot.core.controller.dto.PersonBasicInfoResponse;
 import com.lumiday.springboot.core.controller.dto.ThemeRequest;
 import com.lumiday.springboot.core.controller.dto.ThemeResponse;
@@ -48,7 +48,7 @@ import com.lumiday.springboot.core.domain.invitation.vo.EndingDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.GalleryDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.IntroLayoutDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.InvitationMessageDomain;
-import com.lumiday.springboot.core.domain.invitation.vo.PersonBaseInfoDomain;
+import com.lumiday.springboot.core.domain.invitation.vo.PersonBasicInfoDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.ThemeDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.TransportationGuideDomain;
 import com.lumiday.springboot.core.domain.invitation.vo.WeddingDateDomain;
@@ -62,7 +62,7 @@ import com.lumiday.springboot.core.mapper.GalleryMapper;
 import com.lumiday.springboot.core.mapper.IntroLayoutMapper;
 import com.lumiday.springboot.core.mapper.InvitationMapper;
 import com.lumiday.springboot.core.mapper.InvitationMessageMapper;
-import com.lumiday.springboot.core.mapper.PersonBaseInfoMapper;
+import com.lumiday.springboot.core.mapper.PersonBasicInfoMapper;
 import com.lumiday.springboot.core.mapper.ThemeMapper;
 import com.lumiday.springboot.core.mapper.TransportationGuideMapper;
 import com.lumiday.springboot.core.mapper.WeddingDateMapper;
@@ -135,16 +135,16 @@ public class InvitationService {
 
     // --- PersonBaseInfo ---
     public PersonBasicInfoResponse getPersonInfoByInvitationId(String invitationId) {
-        PersonBaseInfo personBaseInfo = invitationPersistence.getPersonInfoByInvitationId(invitationId);
-        PersonBaseInfoDomain personBaseInfoDomain = PersonBaseInfoMapper.INSTANCE.toDomain(personBaseInfo);
-        return PersonBaseInfoMapper.INSTANCE.toResponse(personBaseInfoDomain);
+        PersonBasicInfo personBasicInfo = invitationPersistence.getPersonInfoByInvitationId(invitationId);
+        PersonBasicInfoDomain personBasicInfoDomain = PersonBasicInfoMapper.INSTANCE.toDomain(personBasicInfo);
+        return PersonBasicInfoMapper.INSTANCE.toResponse(personBasicInfoDomain);
     }
 
-    public PersonBasicInfoResponse updatePersonInfoByInvitationId(String invitationId, PersonBaseInfoRequest request) {
-        PersonBaseInfoDomain personBaseInfoDomain = PersonBaseInfoMapper.INSTANCE.toDomain(request);
-        PersonBaseInfo personBaseInfo = invitationPersistence.updatePersonInfo(invitationId, personBaseInfoDomain);
-        personBaseInfoDomain = PersonBaseInfoMapper.INSTANCE.toDomain(personBaseInfo);
-        return PersonBaseInfoMapper.INSTANCE.toResponse(personBaseInfoDomain);
+    public PersonBasicInfoResponse updatePersonInfoByInvitationId(String invitationId, PersonBasicInfoRequest request) {
+        PersonBasicInfoDomain personBasicInfoDomain = PersonBasicInfoMapper.INSTANCE.toDomain(request);
+        PersonBasicInfo personBasicInfo = invitationPersistence.updatePersonInfo(invitationId, personBasicInfoDomain);
+        personBasicInfoDomain = PersonBasicInfoMapper.INSTANCE.toDomain(personBasicInfo);
+        return PersonBasicInfoMapper.INSTANCE.toResponse(personBasicInfoDomain);
     }
 
     // --- WeddingDate ---

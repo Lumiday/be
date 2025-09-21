@@ -16,7 +16,7 @@ import com.lumiday.springboot.core.controller.dto.IntroLayoutRequest;
 import com.lumiday.springboot.core.controller.dto.InvitationMessageRequest;
 import com.lumiday.springboot.core.controller.dto.InvitationMessageResponse;
 import com.lumiday.springboot.core.controller.dto.InvitationResponse;
-import com.lumiday.springboot.core.controller.dto.PersonBaseInfoRequest;
+import com.lumiday.springboot.core.controller.dto.PersonBasicInfoRequest;
 import com.lumiday.springboot.core.controller.dto.PersonBasicInfoResponse;
 import com.lumiday.springboot.core.controller.dto.ThemeRequest;
 import com.lumiday.springboot.core.controller.dto.ThemeResponse;
@@ -101,7 +101,7 @@ public class InvitationController {
 
     @PatchMapping("/{invitationId}/person-info")
     public ResponseEntity<PersonBasicInfoResponse> updatePersonInfo(@PathVariable String invitationId,
-                                                                    @RequestBody PersonBaseInfoRequest request) {
+                                                                    @RequestBody PersonBasicInfoRequest request) {
         return ResponseEntity.ok(invitationService.updatePersonInfoByInvitationId(invitationId, request));
     }
 

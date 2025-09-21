@@ -23,7 +23,7 @@ import com.lumiday.jpa.vo.Ending;
 import com.lumiday.jpa.vo.Gallery;
 import com.lumiday.jpa.vo.IntroLayout;
 import com.lumiday.jpa.vo.InvitationMessage;
-import com.lumiday.jpa.vo.PersonBaseInfo;
+import com.lumiday.jpa.vo.PersonBasicInfo;
 import com.lumiday.jpa.vo.PersonInfo;
 import com.lumiday.jpa.vo.ThemeStyle;
 import com.lumiday.jpa.vo.TransportationGuide;
@@ -60,7 +60,7 @@ class InvitationRepositoryTest {
 
         PersonInfo personInfo1 = new PersonInfo(PersonRole.GROOM, "test", "test2", "tsets", false);
         PersonInfo personInfo2 = new PersonInfo(PersonRole.BRIDE, "test", "test2", "tsets", false);
-        PersonBaseInfo personBaseInfo = new PersonBaseInfo(DeceasedDisplayType.CHRYSANTHEMUM,
+        PersonBasicInfo personBasicInfo = new PersonBasicInfo(DeceasedDisplayType.CHRYSANTHEMUM,
                 List.of(personInfo1, personInfo2));
 
         InvitationEntity invitationEntity = InvitationEntity.builder()
@@ -71,7 +71,7 @@ class InvitationRepositoryTest {
                 .invitationMessage(new InvitationMessage("title", "content"))
                 .gallery(new Gallery("name", GalleryType.CHECKERBOARD, false, List.of("image1", "image2", "image3")))
                 .introLayout(new IntroLayout("type", PhotoFrameStyle.FRAME, "qweqw"))
-                .personBaseInfo(personBaseInfo)
+                .personBasicInfo(personBasicInfo)
                 .theme(new ThemeStyle(ThemeFontFamily.OWNGLYPH, ThemeFontSize.LARGER, ThemeColor.IVORY,
                         ThemePattern.CHECK, false, false))
                 .transportationGuide(new TransportationGuide("test", "test"))

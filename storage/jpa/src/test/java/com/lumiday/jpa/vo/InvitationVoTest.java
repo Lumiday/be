@@ -86,7 +86,7 @@ class InvitationVoTest {
 
     @Test
     void personBaseInfo_shouldSetDefaults() {
-        PersonBaseInfo baseInfo = new PersonBaseInfo(DeceasedDisplayType.CHRYSANTHEMUM, null);
+        PersonBasicInfo baseInfo = new PersonBasicInfo(DeceasedDisplayType.CHRYSANTHEMUM, null);
         assertThat(baseInfo.getPersonInfos()).isEmpty();
     }
 

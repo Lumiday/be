@@ -1,19 +1,10 @@
 package com.lumiday.springboot.core.controller.dto;
 
 import com.lumiday.core.enums.DeceasedDisplayType;
-import com.lumiday.springboot.core.domain.invitation.vo.PersonBaseInfoDomain;
 import java.util.List;
 
 public record PersonBasicInfoResponse(
-        List<PersonInfoResponse> personInfoList,
+        List<PersonInfoResponse> personInfos,
         DeceasedDisplayType deceasedDisplayType
 ) {
-    public static PersonBasicInfoResponse of(PersonBaseInfoDomain domain) {
-        return new PersonBasicInfoResponse(
-                domain.getPersonInfoList().stream()
-                        .map(PersonInfoResponse::of)
-                        .toList(),
-                domain.getDeceasedDisplayType()
-        );
-    }
 }

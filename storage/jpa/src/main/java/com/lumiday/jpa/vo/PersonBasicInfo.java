@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PersonBaseInfo {
+public class PersonBasicInfo {
 
     @Column(name = "person_deceased_display_type")
     private DeceasedDisplayType deceasedDisplayType;
@@ -26,7 +26,7 @@ public class PersonBaseInfo {
     )
     private List<PersonInfo> personInfos;
 
-    public PersonBaseInfo(DeceasedDisplayType deceasedDisplayType, List<PersonInfo> personInfos) {
+    public PersonBasicInfo(DeceasedDisplayType deceasedDisplayType, List<PersonInfo> personInfos) {
         if (deceasedDisplayType == null) {
             throw new IllegalArgumentException("deceasedDisplayType은 필수입니다.");
         }
